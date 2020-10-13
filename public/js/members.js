@@ -58,5 +58,19 @@ $(document).ready(() => {
     console.log(event.target)
 
     console.log($(event.target).attr("data-selfLink"));
+
+    let bookURL = $(event.target).attr("data-selfLink");
+
+    $.ajax({
+      url: bookURL,
+      method: "GET"
+    }).then(function (response) {
+      console.log(response.id);
+      console.log(response.volumeInfo.title);
+      console.log(response.volumeInfo.authors.join(", "));
+      console.log(response.volumeInfo.pageCount);
+      console.log(response.volumeInfo.imageLinks.large);
+    });
   })
+  
 });
