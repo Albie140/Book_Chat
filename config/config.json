@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Th1s1sn3w",
+    "password": "",
     "database": "bookchat_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
