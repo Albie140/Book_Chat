@@ -2,3 +2,25 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+#progressBar{
+  background:#fcfcfc;
+  width: 600px;
+  height: 26px;
+  max-width: 96%;
+  border:5px solid #f8b195;
+  border-radius:15px;
+  display: flex;
+  justify-content: left;
+  margin: auto;
+  margin-top: 15px;
+  box-sizing: border-box;
+}
+
+#progress{
+  background: rgb(175, 245, 105);
+  height : 16px;
+  width: 0%;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+}
