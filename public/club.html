@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Club Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+    <link href="stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/logout">
+                    Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <img src="" alt="">
+            <div class="col-md-6 col-md-offset-3">
+                <h2>My Book Clubs:</h2>
+                <h4>display favorited clubs here</h4>
+            </div>
+            <div class="col-md-6 col-md-offset-3">
+                <h2>Find a new book:</h2>
+                <form class="search">
+                    <div class="form-group">
+                        <label for="search">Search books</label>
+                        <input type="search" class="form-control" id="search_input" placeholder="search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+                <section id="bookResults">
+                    <div>
+                        <img src="http://books.google.com/books/content?id=_zSzAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                            alt="book cover">
+                        <h4>The Hunger Games</h4>
+                        <p>by Suzanne Collins</p>
+                        <p>First in the ground-breaking HUNGER GAMES trilogy. Set in a dark vision of the near future, a
+                            terrifying reality TV show is taking place. Twelve boys and twelve girls are forced to
+                            appear in a live event called The Hunger Games.</p>
+                        <button class="addBook btn btn-default" type="submit"
+                            data-selfLink="https://www.googleapis.com/books/v1/volumes/_zSzAwAAQBAJ">Add Club</button>
+                    </div>
+
+                </section>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/club.js"></script>
+
+</body>
+
+</html>

@@ -14,10 +14,12 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    // The first name cannot be null
     first_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
+    // The last name cannot be null
     last_name: {
       type: DataTypes.STRING,
       allowNull: false
