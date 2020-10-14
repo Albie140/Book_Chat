@@ -32,6 +32,24 @@ module.exports = function(app) {
       });
   });
 
+  app.post("/api/club", (req, res) => {
+    console.log("recieved post request")
+    console.log(res.body)
+    db.Club.create({
+      google_id: req.body.google_id,
+      book_title: req.body.book_title,
+      book_author: req.body.book_author,
+      pg_count: req.body.pg_count,
+      picture_url: req.body.picture_url 
+    })
+      .then(() => {
+        res.redirect(307, `/club/${google_id}`);
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();

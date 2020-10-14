@@ -76,7 +76,7 @@ $(document).ready(() => {
   })
   
   function createClub(google_id, book_title, book_author, pg_count, picture_url) {
-    $.post("/api/login", {
+    $.post("/api/club", {
       google_id: google_id,
       book_title: book_title,
       book_author: book_author,
@@ -88,6 +88,7 @@ $(document).ready(() => {
         // If there's an error, log the error
       })
       .catch(err => {
+        console.log("here is wrong")
         console.log(err);
       });
   };
