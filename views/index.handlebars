@@ -1,0 +1,90 @@
+<div class="jumbotron">
+
+    <div>
+        <h1 id="title"> Eat a Burger <i class="fas fa-hamburger"></i></h1>
+    </div>
+    <div id="addBurger">
+        <form class="form-inline create-form justify-content-center">
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control form-control-lg" name="name" id="burgs" placeholder="Add a Burger">
+            </div>
+            <button type="submit" class="btn btn-lg btn-warning mb-2">Add</button>
+        </form>
+
+
+
+
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+
+            <div id="burgersDivEat">
+                <h2>Burgers to Eat</h2>
+
+
+                <div id="burgerListEat">
+                    {{#each burgers}}
+                    {{#unless devoured}}
+
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col text-left">
+                                    <h5 class="card-title">{{burger_name}}</h5>
+                                </div>
+                                <div class="col text-right">
+                                    <button class="change-devoured btn btn-primary" data-id="{{id}}"
+                                        data-newdevoured="{{devoured}}">
+                                        Devour
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    {{/unless}}
+                    {{/each}}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <div id="burgersDivEat">
+                <h2>Devoured Burgers</h2>
+
+                <div id="burgerListEat">
+                    {{#each burgers}}
+                    {{#unless favorited}}
+
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col text-left">
+                                    <h5 class="card-title">{{burger_name}}</h5>
+                                </div>
+                                <div class="col text-right">
+                                    <button class="remove-burger btn btn-primary" data-id="{{id}}">
+
+                                        Digest
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    {{/unless}}
+                    {{/each}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
