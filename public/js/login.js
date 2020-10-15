@@ -1,8 +1,13 @@
 $(document).ready(() => {
   // Getting references to our form and inputs
-  const loginForm = $("form.login");
+  const loginForm = $("form.form-signin");
   const usernameInput = $("input#username_input");
   const passwordInput = $("input#password_input");
+
+  $("#signupBtn").on("click", event => {
+    event.preventDefault();
+    window.location.replace("/signup");
+  })
 
   // When the form is submitted, we validate there's an username and password entered
   loginForm.on("submit", event => {
@@ -32,7 +37,7 @@ $(document).ready(() => {
       .then((data) => {
         console.log(data);
         console.log("data")
-        window.location.replace("/members");
+        window.location.replace("/homepage");
         // If there's an error, log the error
       })
       .catch(err => {
