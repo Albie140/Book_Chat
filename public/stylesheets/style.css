@@ -24,3 +24,7 @@ form.login {
   border-bottom-left-radius: 15px;
   border-top-left-radius: 15px;
 }
+
+#errormessage{
+  display: none
+}
