@@ -241,7 +241,7 @@ background-color: #c0d9e4;
 
 span.stars, span.stars span {
 display: inline-block;
-background: url("star_rate-24px.svg");
+background: url("/assets/star_rate-24px.svg");
 /* background-size: 50%; */
 background-size: 18px 18px;
 /* width: 200px; */

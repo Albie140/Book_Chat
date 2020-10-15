@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <title>Passport Authentication</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
-  <link href="stylesheets/login.css" rel="stylesheet">
-</head>
-
-
 <body>
     <div class="container">
       <div class="row">
@@ -30,8 +16,8 @@
                   <label for="last_name_input">Last name</label>
                 </div>
                 <div class="form-label-group">
-                  <input type="email" id="username_input" class="form-control" placeholder="Email address" required autofocus>
-                  <label for="password_input">Email address</label>
+                  <input type="username" id="username_input" class="form-control" placeholder="username" required autofocus>
+                  <label for="username_input">Username</label>
                 </div>
   
                 <div class="form-label-group">
@@ -42,17 +28,16 @@
                 <br>
                
                 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Create new account</button>
-                <button href="./login.handlebars" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Back</button> 
+                <button id="backBtn" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Back</button> 
                 <!-- <img src="undraw_reading_time_gvg0.svg" width="50%" alt="illustration"> -->
               </form>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-  </body>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/signup.js"></script>
 
-
-</html>
+</body>

@@ -1,10 +1,15 @@
 $(document).ready(() => {
   // Getting references to our form and input
-  const signUpForm = $("form.signup");
+  const signUpForm = $("form.form-signin");
   const usernameInput = $("input#username_input");
   const passwordInput = $("input#password_input");
   const firstNameInput = $("input#first_name_input");
   const lastNameInput = $("input#last_name_input");
+
+  $("#backBtn").on("click", event => {
+    event.preventDefault();
+    window.location.replace("/login");
+  })
 
   // When the signup button is clicked, we validate the username and password are not blank
   signUpForm.on("submit", event => {
@@ -37,7 +42,7 @@ $(document).ready(() => {
       password: password
     })
       .then(() => {
-        window.location.replace("/members");
+        window.location.replace("/homepage");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
