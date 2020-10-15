@@ -13,7 +13,9 @@ module.exports = function (app) {
         msg: "Welcome!"
       });
     }
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.render("login", {
+        msg: "Welcome!"
+      });
   });
 
   app.get("/login", (req, res) => {
@@ -21,7 +23,9 @@ module.exports = function (app) {
     if (req.user) {
       res.render();
     }
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.render("login", {
+        msg: "Welcome!"
+      });
   });
 
   app.get("/thread/:id", (req, res) => {
