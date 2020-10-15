@@ -1,9 +1,9 @@
-const Sequelize = require("sequelize")
+var Sequelize = require("sequelize");
 
 
-var sequelize = new Sequelize("sequelize_bookchat", "root", "Omicat34", {
+var connection = new Sequelize("bookchat_sequelize", "root", "Omicat34", {
     host: "localhost",
-    port: 3306,
+    port: process.env.PORT || 3306,
     dialect: "mysql",
     pool: {
         max: 5,
@@ -12,4 +12,4 @@ var sequelize = new Sequelize("sequelize_bookchat", "root", "Omicat34", {
     }
 });
 
-module.exports = connection
+module.exports = connection;
