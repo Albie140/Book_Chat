@@ -13,6 +13,7 @@ $(document).ready(() => {
     };
 
     if (!userData.username || !userData.password) {
+      $("#errormessage").show()
       return;
     }
 
@@ -28,12 +29,18 @@ $(document).ready(() => {
       username: username,
       password: password
     })
-      .then(() => {
+      .then((data) => {
+        console.log(data);
+        console.log("data")
         window.location.replace("/members");
         // If there's an error, log the error
       })
       .catch(err => {
+        if (err){
+          $("#errormessage").show()
+        }
         console.log(err);
+        console.log("error")
       });
   }
 });
