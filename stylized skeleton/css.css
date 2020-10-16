@@ -381,3 +381,14 @@ color: #3C587C;
   height: 100px;
   margin-bottom: 30px;
 }
+
+
+
+
+
+
+.test{
+      width: 100%;
+      height: 15vw;
+      object-fit: cover;
+}
