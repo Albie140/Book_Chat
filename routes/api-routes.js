@@ -50,6 +50,13 @@ module.exports = function(app) {
       });
   });
 
+  app.get("/api/club", function(req, res) {
+    
+    db.Club.findAll().then(function(data) {
+      res.json(data);
+    });
+  });
+
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
