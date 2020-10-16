@@ -58,7 +58,7 @@
                                 style="width: 100%; border-radius: 15px;">
 
                             <h5 class="card-title mt-2">{{this.dataValues.book_title}}</h5><br>
-                            <span class="stars">5.0</span>
+                            <span class="card-subtitle">{{this.dataValues.book_author}}</span>
 
                             <a><span class="material-icons right">
                                     bookmark
@@ -135,8 +135,9 @@ search
                                 style="width: 100%; border-radius: 15px;">
 
                             <h5 class="card-title mt-2">{{book_title}}</h5><br>
-                            <span class="stars">5.0</span>
-                            <button data-selfLink="{{selflink}}" class="addBook btn btn-lg btn-primary btn-block"
+                            <span class="card-subtitle ">{{book_author}}</span>
+                            <br>
+                            <button data-selfLink="{{selflink}}" class="addBook btn btn-lg btn-primary btn-block mt-2"
                                 type="submit">Make Club</button>
                         </div>
                     </div>
