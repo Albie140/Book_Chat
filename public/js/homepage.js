@@ -1,4 +1,12 @@
 $(document).ready(() => {
+  // $( ".addBook" ).click(function() {
+  //   $(this).text($(this).text() == 'bookmark_border' ? 'bookmark' : 'bookmark_border');
+
+  //     });
+
+
+       
+
 
     const searchForm = $("form.form-search");
     const searchInput = $("input#search_input");
@@ -70,6 +78,8 @@ $(document).ready(() => {
     }
 
     $(".addBook").on("click", event => {
+      // $("span", this).toggle();
+      
         event.preventDefault();
 
         console.log(event.target)
@@ -77,7 +87,7 @@ $(document).ready(() => {
         console.log($(event.target).attr("data-selfLink"));
 
         let bookURL = $(event.target).attr("data-selfLink");
-
+       
         $.ajax({
             url: bookURL,
             method: "GET"
@@ -93,9 +103,13 @@ $(document).ready(() => {
                 picture_url = "https://via.placeholder.com/128x196?text=No+Image+Found"
             };
             createClub(google_id, book_title, book_author, pg_count, picture_url)
+            
+            
+        }).then(function(){
+          location.reload();
         });
-
-    })
+  
+    });
 
     function createClub(google_id, book_title, book_author, pg_count, picture_url) {
         $.post("/api/club", {
