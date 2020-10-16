@@ -118,8 +118,9 @@ module.exports = function (app) {
         book: allClubs,
         search: searchArr
       };
-      res.render("homepage", hbsObject);
       searchArr = defaultArr;
+      res.render("homepage", hbsObject);
+      
     });
   });
 
