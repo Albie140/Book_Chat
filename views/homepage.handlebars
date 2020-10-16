@@ -8,8 +8,7 @@
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item px-2">
-                        <span style="font-size:14px" class="nav-link"
-                            href="Pages/Contact.html">LOGO GOES HERE</span>
+                        <span style="font-size:14px" class="nav-link" href="Pages/Contact.html">LOGO GOES HERE</span>
                     </li>
                 </ul>
 
@@ -41,15 +40,14 @@
                     </p>
                 </div>
                 {{#each book}}
-                {{#if favorited}}
                 <div class="col-2">
                     <div class="card grow mb-5 mt-4 shadow border border-white" style=" border-radius: 20px;">
                         <div class="card-body">
-                            <img src="{{book.thumbnail}}" alt="Book Cover" class="img-fluid"
+                            <img src="{{this.dataValues.picture_url}}" alt="Book Cover" class="img-fluid"
                                 style="width: 100%; border-radius: 15px;">
 
-                            <h5 class="card-title mt-2">{{book_title}}</h5>
-                            <span class="stars">{{book_rating}}</span>
+                            <h5 class="card-title mt-2">{{this.dataValues.book_title}}</h5>
+                            <span class="stars"></span>
 
                             <a><span class="material-icons right">
                                     bookmark
@@ -60,7 +58,6 @@
                         </div>
                     </div>
                 </div>
-                {{/if}}
                 {{/each}}
 
             </div>
@@ -91,7 +88,16 @@
 
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input class="form-control form-control-lg shadow-lg" type="text" placeholder="Search">
+
+                    <form class="form-search">
+
+                        <input id="search_input" class="form-control form-control-lg shadow-lg" type="text"
+                            placeholder="Search">
+
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Search</button>
+
+                    </form>
+
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12">
 
@@ -109,6 +115,20 @@
 
             </div>
             <div id="bookResults" class="row flex-row flex-nowrap scrollmenu ml-5">
+                {{#each search}}
+                <div class="col-2">
+                    <div class="card grow mb-5 mt-4 shadow border border-white" style=" border-radius: 20px;">
+                        <div class="card-body">
+                            <img src="{{image_url}}" alt="book cover" class="img-fluid"
+                                style="width: 100%; border-radius: 15px;">
+
+                            <h5 class="card-title mt-2">{{book_title}}</h5>
+                            <span class="stars">5.0</span>
+                            <button data-selfLink="{{selflink}}" class="addBook btn btn-lg btn-primary btn-block" type="submit">Make Club</button>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
 
             </div>
 
