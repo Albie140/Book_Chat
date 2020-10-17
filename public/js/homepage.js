@@ -90,6 +90,9 @@ $(document).ready(() => {
 
     $(".addBook").on("click", event => {
       // $("span", this).toggle();
+
+
+    
       
         event.preventDefault();
 
@@ -98,7 +101,19 @@ $(document).ready(() => {
         console.log($(event.target).attr("data-selfLink"));
 
         let bookURL = $(event.target).attr("data-selfLink");
-       
+
+     
+  var toast = document.getElementById("toastConfirm");
+
+  // Add the "show" class to DIV
+  toast.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+
+      
+      
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
         $.ajax({
             url: bookURL,
             method: "GET"
@@ -117,7 +132,8 @@ $(document).ready(() => {
             
             
         }).then(function(){
-          location.reload();
+          setTimeout(location.reload(), 7000);
+          
         });
   
     });

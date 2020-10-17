@@ -76,9 +76,7 @@ main{
 h1{
   font-size: 5vw;
 }
-h2{
-  font-size: 3vw;
-}
+
 .form-control {
   /* border: 0; */
   border-radius: 1rem;
@@ -475,6 +473,9 @@ margin-bottom: 30px;
 
 
 @media (min-width: 576px) {
+  h2{
+    font-size: 7vw;
+  }
   .test{
     width: 100%;
     height: 35vw;
@@ -483,6 +484,9 @@ margin-bottom: 30px;
 }
 
 @media (min-width: 768px) { 
+  h2{
+    font-size: 7vw;
+  }
   .test{
     width: 100%;
     height: 30vw;
@@ -491,6 +495,9 @@ margin-bottom: 30px;
  }
 
 @media (min-width: 992px) { 
+  h2{
+    font-size: 3vw;
+  }
   .test{
     width: 100%;
     height: 20vw;
@@ -499,6 +506,9 @@ margin-bottom: 30px;
 }
 
 @media (min-width: 1200px) { 
+  h2{
+    font-size: 3vw;
+  }
   .test{
     width: 100%;
     height: 15vw;
@@ -532,12 +542,12 @@ border-radius: 1rem;
 }
 
 #fadeIn div {
-  animation: fadein 2s;
-  -moz-animation: fadein 2s; /* Firefox */
-  -webkit-animation: fadein 2s; /* Safari and Chrome */
-  -o-animation: fadein 2s; /* Opera */
+  animation: fadeinRefresh 2s;
+  -moz-animation: fadeinRefresh 2s; /* Firefox */
+  -webkit-animation: fadeinRefresh 2s; /* Safari and Chrome */
+  -o-animation: fadeinRefresh 2s; /* Opera */
 }
-@keyframes fadein {
+@keyframes fadeinRefresh {
   from {
       opacity:0;
   }
@@ -545,7 +555,7 @@ border-radius: 1rem;
       opacity:1;
   }
 }
-@-moz-keyframes fadein { /* Firefox */
+@-moz-keyframes fadeinRefresh { /* Firefox */
   from {
       opacity:0;
   }
@@ -553,7 +563,7 @@ border-radius: 1rem;
       opacity:1;
   }
 }
-@-webkit-keyframes fadein { /* Safari and Chrome */
+@-webkit-keyframes fadeinRefresh { /* Safari and Chrome */
   from {
       opacity:0;
   }
@@ -561,11 +571,66 @@ border-radius: 1rem;
       opacity:1;
   }
 }
-@-o-keyframes fadein { /* Opera */
+@-o-keyframes fadeinRefresh { /* Opera */
   from {
       opacity:0;
   }
   to {
       opacity: 1;
   }
+}
+
+
+.titleHeight{
+  min-height: 48px;
+  max-height: 48px;
+  display: inline-block;
+  /* width: 180px; */
+  /* white-space: nowrap; */
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+
+
+/* The toastConfirm - position it at the bottom and in the middle of the screen */
+#toastConfirm {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color:#3C587C; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 1rem; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the toastConfirm */
+  bottom: 30px; /* 30px from the bottom */
+}
+
+#toastConfirm.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the toastConfirm in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
 }

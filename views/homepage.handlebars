@@ -4,6 +4,9 @@
 
         <nav class="navbar navbar-expand-md navcolor navbar-light">
 <a class="navbar-brand" href="index.html"><strong>Project Name</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav ml-auto">
 
@@ -18,6 +21,7 @@
     </header>
 
     <section>
+<div id="toastConfirm">Joining club...</div>
 
         <div class="container-fluid">
             <!-- start of portfolio placeholder images -->
@@ -59,8 +63,13 @@
                                 <img src="{{this.dataValues.Club.dataValues.picture_url}}" alt="Book Cover" class="test"
                                     style="width: 100%; border-radius: 15px;">
                             </a>
-                            <h5 class="card-title mt-2">{{this.dataValues.Club.dataValues.book_title}}</h5><br>
+
+                            <div class="titleHeight">
+                             <h5 class="card-title mt-2">{{this.dataValues.Club.dataValues.book_title}}</h5><br>
+                            </div>
+                            <br>
                             <span class="card-subtitle">{{this.dataValues.Club.dataValues.book_author}}</span>
+
 
                             <button data-selfLink="{{selflink}}" title="Delete Book"
                                 class="deleteBook btn btn-link btn-block material-icons right pt-0 mr-2" type="submit">
@@ -99,7 +108,7 @@
                     <form class="form-inline form-search">
 
                         <input id="search_input" class="form-control form-control-lg shadow-lg mr-2" type="text"
-                            placeholder="Search" style="width: 80%;">
+                            placeholder="Search by title" style="width: 80%;">
 
                         <button class="btn btn-primary text-uppercase round" type="submit" style="width: auto;"><span
                                 class="material-icons mt-2">
@@ -133,7 +142,9 @@
                                 <img src="{{image_url}}" alt="book cover" class="test"
                                     style="width: 100%; border-radius: 15px;">
                             </a>
+                            <div class="titleHeight">
                             <h5 class="card-title mt-2">{{book_title}}</h5><br>
+                            </div><br>
                             <span class="card-subtitle ">{{book_author}}</span>
 
                             {{!-- <button data-selfLink="{{selflink}}" class="addBook right" type="submit"><span alt="Add Club" class="material-icons right">
@@ -164,8 +175,9 @@
             <br>
 
             <br>
-        </div>
+            {{!-- <div id="toastConfirm">Some text some message..</div> --}}
 
+        </div>
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
