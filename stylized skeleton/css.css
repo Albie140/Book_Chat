@@ -108,17 +108,7 @@ h2{
 
 
 
-#exTab1 .tab-content {
-  color : white;
-  background-color: #428bca;
-  padding : 5px 15px;
-}
 
-#exTab2 h3 {
-  color : white;
-  background-color: #428bca;
-  padding : 5px 15px;
-}
 
 /* remove border radius for the tab */
 
@@ -186,7 +176,7 @@ h2{
   background-color: #d9ebf3;
   border-radius: 1rem !important;
   margin: 5px;
-  min-width: 300px;
+  min-width: 200px;
 }
 
 .nav-tabs {
@@ -420,3 +410,10 @@ color: #3C587C;
   visibility: visible;
 }
 
+
+h3{
+  font-size: 3vw;
+}
+.btn{
+  border-radius: 1rem ;
+}

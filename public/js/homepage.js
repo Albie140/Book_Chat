@@ -67,7 +67,7 @@ $(document).ready(() => {
         let rawHTML = "";
 
         for (let i = 0; i < 8; i++) {
-            rawHTML += `<div class="col-2"><div class="card grow mb-5 mt-4 shadow border border-white" style=" border-radius: 20px;"><div class="card-body"><img src="${data.items[i].volumeInfo.imageLinks ? data.items[i].volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/128x196?text=No+Image+Found'}" alt="Book Cover" class="img-fluid"style="width: 100%; border-radius: 15px;"><h5 class="card-title mt-2">${data.items[i].volumeInfo.title ? data.items[i].volumeInfo.title : "No Title"}</h5><span class="stars">${data.items[i].volumeInfo.authors ? data.items[i].volumeInfo.authors.join(", ") : "No Author"}</span><a><span class="material-icons right">bookmark_border</span><span style="display: none" class="material-icons right">bookmark</span></a></div></div></div>`;
+            rawHTML += `<div class="col-2"><div class="card grow mb-5 mt-4 shadow border border-white" style=" border-radius: 20px;"><div class="card-body"><img src="${data.items[i].volumeInfo.imageLinks ? data.items[i].volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/128x196?text=No+Image+Found'}" alt="Book Cover" class="img-fluid"style="width: 100%; border-radius: 15px;"><h5 class="card-title mt-2">${data.items[i].volumeInfo.title ? data.items[i].volumeInfo.title : "No Title"}</h5><span class="stars">${data.items[i].volumeInfo.authors[0] ? data.items[i].volumeInfo.authors[0] : "No Author"}</span><a><span class="material-icons right">bookmark_border</span><span style="display: none" class="material-icons right">bookmark</span></a></div></div></div>`;
 
             console.log(rawHTML);
         };
