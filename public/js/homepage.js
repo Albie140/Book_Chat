@@ -77,6 +77,17 @@ $(document).ready(() => {
         console.log("done")
     }
 
+    // $(".clickClub").on("click", event => {
+    //     event.preventDefault();
+    //     event.stopPropagation();
+
+    //     console.log($(event.target).attr("data-clubid"));
+
+    //     let clickedID = $(event.target).attr("data-clubid");
+
+    //     location.assign(`/club/${clickedID}`);
+    // });
+
     $(".addBook").on("click", event => {
       // $("span", this).toggle();
       

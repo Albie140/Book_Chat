@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+// const { Where } = require("sequelize/types/lib/utils");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -34,7 +35,7 @@ module.exports = function(app) {
 
   app.post("/api/club", (req, res) => {
     console.log("recieved post request")
-    console.log(res.body)
+    console.log(req.user)
     db.Club.create({
       google_id: req.body.google_id,
       book_title: req.body.book_title,
@@ -42,20 +43,79 @@ module.exports = function(app) {
       pg_count: req.body.pg_count,
       picture_url: req.body.picture_url 
     })
-      .then(() => {
-        res.redirect(307, `/club/${google_id}`);
+      .then((data) => {
+        db.Association.create({
+          is_fav: true,
+          current_pg: 0,
+          UserId: req.user.id,
+          ClubId: data.id
+        })
+        res.redirect(307, `/club/${data.id}`);
       })
       .catch(err => {
         res.status(401).json(err);
       });
   });
 
-  // app.get("/api/club", function(req, res) {
-  //   console. log(data)
-  //   db.Club.findAll().then(function(data) {
-  //     res.json(data);
-  //   });
+  app.post("/api/thread", (req, res) => {
+    console.log("recieved thread post request")
+    console.log(req.user)
+
+    db.Thread.create({
+      topic: req.body.topic,
+      pg_num: req.body.pg_num,
+      ClubId: req.body.ClubId,
+      UserId: req.user.id
+    })
+      .then((data) => {
+        console.log(data);
+        res.redirect(307, `/thread/${data.id}`);
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+
+
+  app.put("/api/pgnum", (req, res) => {
+    console.log("recieved user put request");
+    console.log(req.body.pg_num);
+    console.log(req.user.id);
+    console.log(req.body.club_id);
+
+    db.Association.update({current_pg: req.body.pg_num}, {where: {UserId : req.user.id, ClubId: req.body.club_id}})
+      .then((data) => {
+        console.log(data);
+        res.end();
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+
+  // app.put("/api/fav", (req, res) => {
+  //   console.log("recieved user put request");
+  //   console.log(req.body.fav);
+  //   console.log(req.user.id);
+  //   console.log(req.body.club_id);
+
+  //   db.Association.update({is_fav: false}, {where: {UserId : req.user.id, ClubId: req.body.club_id}})
+  //     .then((data) => {
+  //       console.log(data);
+  //       res.end();
+  //     })
+  //     .catch(err => {
+  //       res.status(401).json(err);
+  //     });
   // });
+
+  app.get("/api/club", function(req, res) {
+    
+    db.Club.findAll().then(function(data) {
+      res.json(data);
+    });
+  });
+
 
   // Route for logging user out
   app.get("/logout", (req, res) => {
