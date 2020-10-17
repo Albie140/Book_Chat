@@ -3,7 +3,7 @@ const db = require("../models");
 const passport = require("../config/passport");
 // const { Where } = require("sequelize/types/lib/utils");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -23,7 +23,7 @@ module.exports = function(app) {
       username: req.body.username,
       password: req.body.password,
       first_name: req.body.first_name,
-      last_name: req.body.last_name 
+      last_name: req.body.last_name
     })
       .then(() => {
         res.redirect(307, "/api/login");
@@ -35,21 +35,27 @@ module.exports = function(app) {
 
   app.post("/api/club", (req, res) => {
     console.log("recieved post request")
-    console.log(req.user)
+    console.log(req.user);
     db.Club.create({
       google_id: req.body.google_id,
       book_title: req.body.book_title,
       book_author: req.body.book_author,
       pg_count: req.body.pg_count,
-      picture_url: req.body.picture_url 
+      picture_url: req.body.picture_url,
+      book_rating: req.body.book_rating
     })
       .then((data) => {
+        console.log(data)
         db.Association.create({
           is_fav: true,
           current_pg: 0,
           UserId: req.user.id,
           ClubId: data.id
         })
+          .then((assData) => {
+            console.log(assData)
+            res.redirect(307, `/club/${data.id}`);
+          })
         res.redirect(307, `/club/${data.id}`);
       })
       .catch(err => {
@@ -83,7 +89,7 @@ module.exports = function(app) {
     console.log(req.user.id);
     console.log(req.body.club_id);
 
-    db.Association.update({current_pg: req.body.pg_num}, {where: {UserId : req.user.id, ClubId: req.body.club_id}})
+    db.Association.update({ current_pg: req.body.pg_num }, { where: { UserId: req.user.id, ClubId: req.body.club_id } })
       .then((data) => {
         console.log(data);
         res.end();
@@ -109,9 +115,9 @@ module.exports = function(app) {
   //     });
   // });
 
-  app.get("/api/club", function(req, res) {
-    
-    db.Club.findAll().then(function(data) {
+  app.get("/api/club", function (req, res) {
+
+    db.Club.findAll().then(function (data) {
       res.json(data);
     });
   });
