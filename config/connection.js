@@ -1,12 +1,12 @@
 var Sequelize = require("sequelize");
-var mysql = require("mysql");
+// var mysql = require("mysql");
 const { config } = require("dotenv/types");
 
 
 
 if (config.use_env_variable) {
-    var connection =new Sequelize(process.env[cinfig.use_env_variable]);
-} else{
+    var connection = new Sequelize(process.env[config.use_env_variable]);
+} else {
     var connection = new Sequelize(config.database, config.username, config.password, config);
 }
 
