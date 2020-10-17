@@ -47,10 +47,11 @@ $(document).ready(() => {
             $.ajax("/booksearch", {
                 type: "PUT",
                 data: { daddy: resArr }
-            }).then(function () {
-                location.reload();
-
             });
+            // .then(function () {
+            //     location.reload();
+
+            // });
 
         });
 
