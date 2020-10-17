@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/css.css">
     <style>
         /* gotham fonts with multiple sources for browser compatability */
-        @font-face {
+         @font-face {
             font-family: gotham-book;
             src: url("gotham-book.oft") format("opentype"),
                 /* Original File */
@@ -35,6 +35,15 @@
                 url("gotham-black.woff") format("woff"),
                 /* Modern Browsers */
                 url("gotham-black.ttf") format("truetype");
+            /* Safari, Android, iOS */
+        }
+        @font-face {
+            font-family: gotham-medium;
+            src: url("Gotham-Medium.otf") format("opentype"),
+                /* Original File */
+                url("Gotham-Medium.woff") format("woff"),
+                /* Modern Browsers */
+                url("Gotham-Medium.ttf") format("truetype");
             /* Safari, Android, iOS */
         }
     </style>
