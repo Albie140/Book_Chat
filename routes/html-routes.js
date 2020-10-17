@@ -79,11 +79,14 @@ module.exports = function (app) {
     console.log("searching for thread #" + thread_id);
 
     db.Thread.findOne({ where: { id: thread_id } }).then(function (oneThread) {
-      var hbsObject = {
-        thread: oneThread
-      };
-      console.log(hbsObject);
-      res.render("chat", hbsObject)
+      db.Response.findAll({ where: { ThreadId: thread_id } }).then(function (allChats) {
+        var hbsObject = {
+          response: allChats,
+          thread: oneThread
+        };
+        console.log(hbsObject);
+        res.render("chat", hbsObject);
+      });
     });
 
   });
@@ -91,13 +94,35 @@ module.exports = function (app) {
   app.get("/club/:id", isAuthenticated, (req, res) => {
     let club_id = req.params.id
     console.log("searching for club #" + club_id)
+    let unspoiled = [];
 
-    db.Club.findOne({ where: { id: club_id } }).then(function (oneClub) {
-      var hbsObject = {
-        club: oneClub
-      };
-      console.log(hbsObject);
-      res.render("club", hbsObject)
+    db.Association.findOne({ include : db.Club, where : {UserId : req.user.id , ClubId : club_id}}).then(function (clubData) {
+      db.Thread.findAll({ where: { ClubId: club_id }, include : db.User}).then(function (threadData) {
+        
+        for (let i = 0; i < threadData.length; i++) {
+          if (threadData[i].dataValues.pg_num <= clubData.dataValues.current_pg) {
+            unspoiled.push(threadData[i]);
+          };
+        }
+        
+        // unspoiled posts
+        console.log(unspoiled[0].dataValues.topic);
+        // book title
+        console.log(clubData.dataValues.Club.dataValues.book_title);
+        // user page
+        console.log(clubData.dataValues.current_pg);
+        // first thread topic
+        console.log(threadData[0].dataValues.topic);
+        // first thread author
+        console.log(threadData[0].User.dataValues.first_name);
+
+        var hbsObject = {
+          lessthanthread: unspoiled,
+          club: clubData,
+          thread: threadData
+        };
+        res.render("club", hbsObject)
+      });
     });
   });
 
@@ -113,7 +138,7 @@ module.exports = function (app) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/homepage", isAuthenticated, (req, res) => {
-    db.Club.findAll({}).then(function (allClubs) {
+    db.Association.findAll({ include : db.Club, where : {UserId : req.user.id , is_fav : true}}).then(function (allClubs) {
       var hbsObject = {
         book: allClubs,
         search: searchArr

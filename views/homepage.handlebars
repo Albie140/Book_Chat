@@ -40,13 +40,11 @@
                     </p>
                 </div>
                 {{#each book}}
-                <div class="col-2">
-                    <div class="card grow mb-5 mt-4 shadow border border-white" style=" border-radius: 20px;">
-                        <div class="card-body">
-                            <img src="{{this.dataValues.picture_url}}" alt="Book Cover" class="img-fluid"
-                                style="width: 100%; border-radius: 15px;">
-
-                            <h5 class="card-title mt-2">{{this.dataValues.book_title}}</h5>
+                <div data-clubid="{{this.dataValues.Club.dataValues.id}}" class="col-2 clickClub">
+                    <div data-clubid="{{this.dataValues.Club.dataValues.id}}" class="card grow mb-5 mt-4 shadow border border-white" style=" border-radius: 20px;">
+                        <div data-clubid="{{this.dataValues.Club.dataValues.id}}" class="card-body">
+                            <img src="{{this.dataValues.Club.dataValues.picture_url}}" alt="Book Cover" class="img-fluid" style="width: 100%; border-radius: 15px;">
+                            <h5 class="card-title mt-2">{{this.dataValues.Club.dataValues.book_title}}</h5>
                             <span class="stars"></span>
 
                             <a><span class="material-icons right">

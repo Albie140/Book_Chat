@@ -1,47 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- title -->
-    <title>Book Club</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- css stylesheet -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css.css">
-    <style>
-        /* gotham fonts with multiple sources for browser compatability */
-        /* WILL ADD THESE FONTS LATER */
-        @font-face {
-            font-family: gotham-book;
-            src: url("gotham-book.oft") format("opentype"),
-                /* Original File */
-                url("gotham-book.woff") format("woff"),
-                /* Modern Browsers */
-                url("gotham-book.ttf") format("truetype");
-            /* Safari, Android, iOS */
-        }
-
-        @font-face {
-            font-family: gotham-black;
-            src: url("gotham-black.otf") format("opentype"),
-                /* Original File */
-                url("gotham-black.woff") format("woff"),
-                /* Modern Browsers */
-                url("gotham-black.ttf") format("truetype");
-            /* Safari, Android, iOS */
-        }
-    </style>
-</head>
-
 <body>
-  {{!-- {{Start of header and nav}} --}}
+    {{!-- {{Start of header and nav}} --}}
     <header>
 
         <nav class="navbar navbar-expand-md navcolor navbar-light">
@@ -50,17 +8,16 @@
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item px-2">
-                        <span style="font-family:gotham-book; font-size:14px" class="nav-link"
+                        <span style="font-size:14px" class="nav-link"
                             href="Pages/Contact.html">LOGO GOES HERE</span>
                     </li>
                 </ul>
-
             </div>
         </nav>
 
     </header>
 
-    <sections>
+    <section>
 
         <div class="container-fluid">
             <br>
@@ -70,24 +27,20 @@
 
             <div class="row">
                 <div class="col-1">
- 
+
                 </div>
                 <div class="col-3">
-                    <img src="http://books.google.com/books/content?id=zr5NBldVA5UC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-                        alt="Book Cover" class="img-fluid"
-                        style="width: 100%; border-radius: 20px 20px 0px 0px;">
+                    <img src="{{club.dataValues.Club.dataValues.picture_url}}"
+                        alt="Book Cover" class="img-fluid" style="width: 100%; border-radius: 20px 20px 0px 0px;">
 
                 </div>
                 <div class="col-7">
-                    <h2 style="font-family: 'Abril Fatface', cursive;">{{book_title}}</h2>
+                    <h2 style="font-family: 'Abril Fatface', cursive;">{{club.dataValues.Club.dataValues.book_title}}</h2>
                     <p class="mt-2" id="author">
-                        Author: {{book_author}}
-                    </p>
-                    <p class="mt-2" id="genre">
-                        Genre: {{book_genre}}
+                        Author: {{club.dataValues.Club.dataValues.book_author}}
                     </p>
                     <p class="mt-2" id="description">
-                        {{book_description}}
+                        Maybe a description
                     </p>
                 </div>
                 <div class="col-1">
@@ -99,7 +52,7 @@
         </div>
 
         </section>
-{{!-- {{adds the drop shadow to the portfolio section}} --}}
+        {{!-- {{adds the drop shadow to the portfolio section}} --}}
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <br> <br> <br>
@@ -133,7 +86,7 @@
         <main class="shadow b-col">
             <div class="container">
 
-{{!-- {{First Tab}} --}}
+                {{!-- {{First Tab}} --}}
 
                 <div class="tab-content b-col card" id="myTabContentJust">
                     <br><br>
@@ -145,11 +98,12 @@
                                     <div class="col-6">
                                         <form>
                                             <div class="input-group  mb-3">
-                                                <input type="number" min="0" max="300" class="form-control"
+                                                <input type="number" min="0" max="{{club.dataValues.Club.dataValues.pg_count}}" value="{{club.dataValues.current_pg}}" class="form-control"
                                                     id="current_pg" placeholder="Current page number">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text"
-                                                        style="border-radius: 0% 1rem 1rem 0%;">/{{book_page_number}}</span>
+                                                        style="border-radius: 0% 1rem 1rem 0%;">/<span id="totalPgCount">{{club.dataValues.Club.dataValues.pg_count}}</span>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </form>
@@ -175,37 +129,31 @@
                         </div>
 
 
-                        {{#each post}}
-                        {{#if notSpoiled}}
+                        {{#each lessthanthread}}
                         <div class="card shadow border border-white mb-2 mt-2"
                             style=" border-radius: 20px; width: 100%;">
                             <div class="card-body">
-                                <h5 class="card-title">{{forum_title}}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">{{forum_poster}}</h6>
-                                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                                <p class="card-text">{{forum_content}}</p>
+                                <h5 class="card-title">{{dataValues.topic}}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{User.dataValues.first_name}} {{User.dataValues.last_name}}</h6>
                                 <a href="#" class="btn btn-primary">Join Discussion</a>
-                                <span class="page-number">{{forum_page_number}}</span>
+                                <span class="page-number">{{dataValues.pg_num}}</span>
                             </div>
                         </div>
-                        {{/if}}
                         {{/each}}
 
                     </div>
 
-{{!-- {{Second Tab}} --}}
+                    {{!-- {{Second Tab}} --}}
                     <div class="tab-pane fade" id="profile-just" role="tabpanel" aria-labelledby="profile-tab-just">
 
-                        {{#each post}}
+                        {{#each thread}}
                         <div class="card shadow border border-white mb-2 mt-2"
                             style=" border-radius: 20px; width: 100%;">
                             <div class="card-body">
-                                <h5 class="card-title">{{forum_title}}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">{{forum_poster}}</h6>
-                                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                                <p class="card-text">{{forum_content}}</p>
+                                <h5 class="card-title">{{dataValues.topic}}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{User.dataValues.first_name}} {{User.dataValues.last_name}}</h6>
                                 <a href="#" class="btn btn-primary">Join Discussion</a>
-                                <span class="page-number">{{forum_page_number}}</span>
+                                <span class="page-number">{{dataValues.pg_num}}</span>
                             </div>
                         </div>
                         {{/each}}
@@ -216,22 +164,16 @@
                     <div class="tab-pane fade" id="contact-just" role="tabpanel" aria-labelledby="contact-tab-just">
                         <div class="card shadow border border-top mb-2 mt-2" style=" border-radius: 20px; width: 100%;">
                             <div class="card-body">
-                                <form>
+                                <form id="threadTopic" data-club_id="1">
                                     <div class="form-group">
-                                        <label for="exampleFormControlInput1">Discussion Topic</label>
-                                        <input type="email" class="form-control" id="exampleFormControlInput1">
+                                        <label for="topic">Discussion Question</label>
+                                        <input type="text" class="form-control" id="topic">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Content</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1">Page Limit</label>
-                                        <input type="email" class="form-control" id="exampleFormControlInput1"
-                                            placeholder="example: 300">
+                                        <label for="pg_num">Page Reference</label>
+                                        <input type="number" class="form-control" id="pg_num"
+                                            placeholder="max: {{club.dataValues.Club.dataValues.pg_count}}">
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
@@ -244,7 +186,10 @@
                 <br></br>
             </div>
         </main>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/js.js"></script>
+    <script type="text/javascript" src="/js/club.js"></script>
 
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="/js/js.js"></script>
