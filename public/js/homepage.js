@@ -47,10 +47,12 @@ $(document).ready(() => {
             $.ajax("/booksearch", {
                 type: "PUT",
                 data: { daddy: resArr }
+
             }).then(function () {
                 location.reload();
 
             });
+
 
         });
 
@@ -131,7 +133,7 @@ $(document).ready(() => {
             let book_title = response.volumeInfo.title;
             let book_author = response.volumeInfo.authors ? response.volumeInfo.authors.join(", ") : "no author";
             let pg_count = response.volumeInfo.pageCount;
-            let book_rating = response.volumeInfo.averageRating? response.volumeInfo.averageRating : "NO RATING";
+            let book_rating = response.volumeInfo.averageRating ? response.volumeInfo.averageRating : "NO RATING";
             let picture_url = ""
             if (response.volumeInfo.imageLinks) {
                 picture_url = response.volumeInfo.imageLinks.large ? response.volumeInfo.imageLinks.large : response.volumeInfo.imageLinks.thumbnail;
