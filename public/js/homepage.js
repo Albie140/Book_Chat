@@ -47,11 +47,10 @@ $(document).ready(() => {
             $.ajax("/booksearch", {
                 type: "PUT",
                 data: { daddy: resArr }
-            });
-            // .then(function () {
-            //     location.reload();
+            }).then(function () {
+                location.reload();
 
-            // });
+            });
 
         });
 
@@ -106,15 +105,30 @@ $(document).ready(() => {
      
   var toast = document.getElementById("toastConfirm");
 
+<<<<<<< Updated upstream
   // Add the "show" class to DIV
   toast.className = "show";
+=======
+        var toast = document.getElementById("toastConfirm");
+
+        // Add the "show" class to DIV
+        toast.className = "show";
+
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
+
+>>>>>>> Stashed changes
 
   // After 3 seconds, remove the show class from DIV
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 
+<<<<<<< Updated upstream
       
       
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+=======
+        setTimeout(function () { toasts.className = toast.className.replace("show", ""); }, 3000);
+>>>>>>> Stashed changes
         $.ajax({
             url: bookURL,
             method: "GET"
@@ -129,12 +143,21 @@ $(document).ready(() => {
             } else {
                 picture_url = "https://via.placeholder.com/128x196?text=No+Image+Found"
             };
+<<<<<<< Updated upstream
             createClub(google_id, book_title, book_author, pg_count, picture_url)
             
             
         }).then(function(){
           setTimeout(location.reload(), 7000);
           
+=======
+            createClub(google_id, book_title, book_author, pg_count, picture_url, book_rating)
+
+
+        }).then(function () {
+            setTimeout(function(){ location.reload()}, 1000);
+
+>>>>>>> Stashed changes
         });
   
     });
