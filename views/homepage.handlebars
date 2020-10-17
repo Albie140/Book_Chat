@@ -55,23 +55,27 @@
                     </p>
                 </div>
                 {{#each book}}
-                <div class="col-8 col-xl-2 col-lg-3 col-md-4 col-sm-5 col-xs-8">
-                    <div class="card grow mb-5 mt-4 shadow border border-white" style=" border-radius: 20px;">
+
+                <div data-clubid="{{this.dataValues.Club.dataValues.id}}" class="col-8 col-xl-2 col-lg-3 col-md-4 col-sm-5 col-xs-8 clickClub">
+                    <div data-clubid="{{this.dataValues.Club.dataValues.id}}" class="card grow mb-5 mt-4 shadow border border-white" style=" border-radius: 20px;">
                         <div class="card-body">
                             <a href="#">
-                                <img src="{{this.dataValues.picture_url}}" alt="Book Cover" class="test"
+                                <img src="{{this.dataValues.Club.dataValues.picture_url}}" alt="Book Cover" class="test"
                                     style="width: 100%; border-radius: 15px;">
                             </a>
+
                             <div class="titleHeight">
-                            <h5 class="card-title mt-2">{{this.dataValues.book_title}}</h5>
+                             <h5 class="card-title mt-2">{{this.dataValues.Club.dataValues.book_title}}</h5><br>
                             </div>
                             <br>
-                            <span class="card-subtitle">{{this.dataValues.book_author}}</span>
+                            <span class="card-subtitle">{{this.dataValues.Club.dataValues.book_author}}</span>
+
 
                             <button data-selfLink="{{selflink}}" title="Delete Book"
                                 class="deleteBook btn btn-link btn-block material-icons right pt-0 mr-2" type="submit">
                                 remove_circle
                             </button>
+
 
 
                         </div>
