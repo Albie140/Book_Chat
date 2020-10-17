@@ -35,7 +35,7 @@ $(document).ready(() => {
                 indObj = {
                     image_url: data.items[i].volumeInfo.imageLinks ? data.items[i].volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/128x196?text=No+Image+Found',
                     book_title: data.items[i].volumeInfo.title ? data.items[i].volumeInfo.title : "No Title",
-                    book_author: data.items[i].volumeInfo.authors ? data.items[i].volumeInfo.authors.join(", ") : "No Author",
+                    book_author: data.items[i].volumeInfo.authors[0] ? data.items[i].volumeInfo.authors[0] : "No Author",
                     selflink: data.items[i].selfLink
                 };
 
@@ -107,14 +107,12 @@ $(document).ready(() => {
 
 
   // Add the "show" class to DIV
-  toast.className = "show";
-
+  
 
         var toast = document.getElementById("toastConfirm");
 
         // Add the "show" class to DIV
         toast.className = "show";
-
         // After 3 seconds, remove the show class from DIV
 
         setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
@@ -124,6 +122,8 @@ $(document).ready(() => {
       
       
         setTimeout(function () { toasts.className = toast.className.replace("show", ""); }, 3000);
+
+
 
         $.ajax({
             url: bookURL,
