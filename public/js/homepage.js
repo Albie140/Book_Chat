@@ -1,11 +1,11 @@
 $(document).ready(() => {
-  // $( ".addBook" ).click(function() {
-  //   $(this).text($(this).text() == 'bookmark_border' ? 'bookmark' : 'bookmark_border');
+    // $( ".addBook" ).click(function() {
+    //   $(this).text($(this).text() == 'bookmark_border' ? 'bookmark' : 'bookmark_border');
 
-  //     });
+    //     });
 
 
-       
+
 
 
     const searchForm = $("form.form-search");
@@ -89,11 +89,11 @@ $(document).ready(() => {
     // });
 
     $(".addBook").on("click", event => {
-      // $("span", this).toggle();
+        // $("span", this).toggle();
 
 
-    
-      
+
+
         event.preventDefault();
 
         console.log(event.target)
@@ -102,18 +102,18 @@ $(document).ready(() => {
 
         let bookURL = $(event.target).attr("data-selfLink");
 
-     
-  var toast = document.getElementById("toastConfirm");
 
-  // Add the "show" class to DIV
-  toast.className = "show";
+        var toast = document.getElementById("toastConfirm");
 
-  // After 3 seconds, remove the show class from DIV
-  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        // Add the "show" class to DIV
+        toast.className = "show";
 
-      
-      
-        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+
+
+
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
         $.ajax({
             url: bookURL,
             method: "GET"
@@ -122,29 +122,31 @@ $(document).ready(() => {
             let book_title = response.volumeInfo.title;
             let book_author = response.volumeInfo.authors ? response.volumeInfo.authors.join(", ") : "no author";
             let pg_count = response.volumeInfo.pageCount;
+            let book_rating = response.volumeInfo.averageRating? response.volumeInfo.averageRating : "NO RATING";
             let picture_url = ""
             if (response.volumeInfo.imageLinks) {
                 picture_url = response.volumeInfo.imageLinks.large ? response.volumeInfo.imageLinks.large : response.volumeInfo.imageLinks.thumbnail;
             } else {
                 picture_url = "https://via.placeholder.com/128x196?text=No+Image+Found"
             };
-            createClub(google_id, book_title, book_author, pg_count, picture_url)
-            
-            
-        }).then(function(){
-          setTimeout(location.reload(), 7000);
-          
+            createClub(google_id, book_title, book_author, pg_count, picture_url, book_rating)
+
+
+        }).then(function () {
+            setTimeout(location.reload(), 7000);
+
         });
-  
+
     });
 
-    function createClub(google_id, book_title, book_author, pg_count, picture_url) {
+    function createClub(google_id, book_title, book_author, pg_count, picture_url, book_rating) {
         $.post("/api/club", {
             google_id: google_id,
             book_title: book_title,
             book_author: book_author,
             pg_count: pg_count,
-            picture_url: picture_url
+            picture_url: picture_url,
+            book_rating: book_rating
         })
             .then(() => {
                 console.log("created club " + book_title);
@@ -163,19 +165,19 @@ $(document).ready(() => {
     });
 
 });
-$.fn.stars = function() {
-  return $(this).each(function() {
-      // Get the value
-      var val = parseFloat($(this).html());
-      // Make sure that the value is in 0 - 5 range, multiply to get width
-      var size = Math.max(0, (Math.min(5, val))) * 18;
-      // Create stars holder
-      var $span = $('<span />').width(size);
-      // Replace the numerical value with stars
-      $(this).html($span);
-  });
+$.fn.stars = function () {
+    return $(this).each(function () {
+        // Get the value
+        var val = parseFloat($(this).html());
+        // Make sure that the value is in 0 - 5 range, multiply to get width
+        var size = Math.max(0, (Math.min(5, val))) * 18;
+        // Create stars holder
+        var $span = $('<span />').width(size);
+        // Replace the numerical value with stars
+        $(this).html($span);
+    });
 }
-$(function() {
-$('span.stars').stars();
+$(function () {
+    $('span.stars').stars();
 });
 //   var stupid = `type="submit" data-selfLink="${data.items[i].selfLink}"`
