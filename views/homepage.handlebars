@@ -3,12 +3,12 @@
     <header>
 
         <nav class="navbar navbar-expand-md navcolor navbar-light">
-
+<a class="navbar-brand" href="index.html"><strong>Project Name</strong></a>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item px-2">
-                        <span style="font-size:14px" class="nav-link" href="Pages/Contact.html">LOGO GOES HERE</span>
+                        <a href="#" style="font-size:14px" class="nav-link" href="#">Logout</a>
                     </li>
                 </ul>
 
@@ -26,11 +26,22 @@
             <br>
             <br>
 
-            <div class="row ml-5">
+            <div class="row ml-auto">
                 <h1 style="font-family: 'Abril Fatface', cursive;">My Book Clubs</h1>
             </div>
-            <div class="row flex-row flex-nowrap scrollmenu ml-5">
-                <div class="col-3 pl-0">
+            <div class="row ml-auto">
+                <div class="col-12 pl-0">
+                    <p class=" d-lg-none d-sm-block col-sm-12  col-sm-12 colxs-12 pl-0">
+                        I'm baby kinfolk cold-pressed glossier narwhal kale chips letterpress health goth drinking
+                        vinegar 90's tumblr pork belly organic put a bird on it. Hella listicle jean shorts man braid
+                        flexitarian microdosing, ramps bushwick pabst bitters humblebrag banh mi kickstarter unicorn.
+                        Everyday carry offal letterpress ramps, adaptogen kinfolk venmo chicharrones. Fashion axe
+                        live-edge vice readymade 90's letterpress coloring book man bun retro beard cold-pressed.
+                    </p>
+                </div>
+            </div>
+            <div class="row flex-row flex-nowrap scrollmenu ml-auto">
+                <div class="d-none d-xs-none d-sm-none d-md-none d-lg-block col-lg-3">
                     <p class="mt-4">
                         I'm baby kinfolk cold-pressed glossier narwhal kale chips letterpress health goth drinking
                         vinegar 90's tumblr pork belly organic put a bird on it. Hella listicle jean shorts man braid
@@ -40,19 +51,24 @@
                     </p>
                 </div>
                 {{#each book}}
-                <div data-clubid="{{this.dataValues.Club.dataValues.id}}" class="col-2 clickClub">
-                    <div data-clubid="{{this.dataValues.Club.dataValues.id}}" class="card grow mb-5 mt-4 shadow border border-white" style=" border-radius: 20px;">
-                        <div data-clubid="{{this.dataValues.Club.dataValues.id}}" class="card-body">
-                            <img src="{{this.dataValues.Club.dataValues.picture_url}}" alt="Book Cover" class="img-fluid" style="width: 100%; border-radius: 15px;">
-                            <h5 class="card-title mt-2">{{this.dataValues.Club.dataValues.book_title}}</h5>
-                            <span class="stars"></span>
 
-                            <a><span class="material-icons right">
-                                    bookmark
-                                </span>
-                                <span style="display: none" class="material-icons right">
-                                    bookmark_border
-                                </span></a>
+                <div data-clubid="{{this.dataValues.Club.dataValues.id}}" class="col-8 col-xl-2 col-lg-3 col-md-4 col-sm-5 col-xs-8 clickClub">
+                    <div data-clubid="{{this.dataValues.Club.dataValues.id}}" class="card grow mb-5 mt-4 shadow border border-white" style=" border-radius: 20px;">
+                        <div class="card-body">
+                            <a href="#">
+                                <img src="{{this.dataValues.Club.dataValues.picture_url}}" alt="Book Cover" class="test"
+                                    style="width: 100%; border-radius: 15px;">
+                            </a>
+                            <h5 class="card-title mt-2">{{this.dataValues.Club.dataValues.book_title}}</h5><br>
+                            <span class="card-subtitle">{{this.dataValues.Club.dataValues.book_author}}</span>
+
+                            <button data-selfLink="{{selflink}}" title="Delete Book"
+                                class="deleteBook btn btn-link btn-block material-icons right pt-0 mr-2" type="submit">
+                                remove_circle
+                            </button>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -60,8 +76,7 @@
 
             </div>
 
-            <br>
-            <br>
+         
 
         </div>
 
@@ -76,28 +91,25 @@
 
 
 
-            <p style="text-align: center;">I'm baby kinfolk cold-pressed glossier narwhal kale chips letterpress
-                health
-                goth drinking</p>
-
-
             <div class="row">
-                <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="col-md-3 col-sm-0 col-xs-0">
 
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <form class="form-inline form-search">
 
-                    <form class="form-search">
+                        <input id="search_input" class="form-control form-control-lg shadow-lg mr-2" type="text"
+                            placeholder="Search" style="width: 80%;">
 
-                        <input id="search_input" class="form-control form-control-lg shadow-lg" type="text"
-                            placeholder="Search">
-
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Search</button>
+                        <button class="btn btn-primary text-uppercase round" type="submit" style="width: auto;"><span
+                                class="material-icons mt-2">
+                                search
+                            </span></button>
 
                     </form>
 
                 </div>
-                <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="col-md-3 col-sm-0 col-xs-0">
 
                 </div>
 
@@ -108,23 +120,38 @@
             <!-- start of portfolio placeholder images -->
             <br>
 
-            <div class="row ml-5">
+            {{!-- <div class="row ml-auto">
                 <h3 style="font-family: 'Abril Fatface', cursive;">Popular</h3>
 
-            </div>
-            <div id="bookResults" class="row flex-row flex-nowrap scrollmenu ml-5">
+            </div> --}}
+            <div id="bookResults" class="row flex-row flex-nowrap scrollmenu ml-auto">
                 {{#each search}}
-                <div class="col-2">
+                <div class="col-8 col-xl-2 col-lg-3 col-md-4 col-sm-5 col-xs-8" id="fadeIn">
                     <div class="card grow mb-5 mt-4 shadow border border-white" style=" border-radius: 20px;">
                         <div class="card-body">
-                            <img src="{{image_url}}" alt="book cover" class="img-fluid"
-                                style="width: 100%; border-radius: 15px;">
+                            <a href="#">
+                                <img src="{{image_url}}" alt="book cover" class="test"
+                                    style="width: 100%; border-radius: 15px;">
+                            </a>
+                            <h5 class="card-title mt-2">{{book_title}}</h5><br>
+                            <span class="card-subtitle ">{{book_author}}</span>
 
-                            <h5 class="card-title mt-2">{{book_title}}</h5>
-                            <span class="stars">5.0</span>
-                            <button data-selfLink="{{selflink}}" class="addBook btn btn-lg btn-primary btn-block" type="submit">Make Club</button>
+                            {{!-- <button data-selfLink="{{selflink}}" class="addBook right" type="submit"><span alt="Add Club" class="material-icons right">
+                                    bookmark_border
+                                </span>
+                                <span alt="Add Club" style="display: none" class="material-icons right">
+                                    bookmark
+                                </span></button> --}}
+
+                            <button data-selfLink="{{selflink}}" title="Join Book Club"
+                                class="addBook btn btn-link btn-block material-icons right pt-0 mr-2" type="submit">
+                                add_circle
+                            </button>
+
+
                         </div>
                     </div>
+
                 </div>
                 {{/each}}
 
@@ -142,7 +169,7 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/js.js"></script>
+    {{!-- <script type="text/javascript" src="/js/js.js"></script> --}}
     <script type="text/javascript" src="/js/homepage.js"></script>
 
 </body>

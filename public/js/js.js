@@ -4,6 +4,10 @@ $( "a" ).click(function() {
       });
 
       $(document).ready(function() {
+        // $( "a" ).click(function() {
+        //   $("span", this).toggle();
+      
+        //     });
         //parallax scroll
         $(window).on("load scroll", function() {
           var parallaxElement = $(".parallax_scroll"),

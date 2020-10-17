@@ -241,11 +241,13 @@ background-color: #c0d9e4;
 
 span.stars, span.stars span {
 display: inline-block;
-background: url("/assets/star_rate-24px.svg");
+background: url("star_rate-24px.svg");
 /* background-size: 50%; */
 background-size: 18px 18px;
 /* width: 200px; */
 height: 20px;
+min-width: 90px;
+
 
 }
 
@@ -255,7 +257,7 @@ background-position: 0 0;
 /* margin-left: 16px; */
 }
 h5{
-max-height: 38px;
+min-height: 38px;
 display: inline-block;
 /* width: 180px; */
 /* white-space: nowrap; */
@@ -472,3 +474,98 @@ margin-bottom: 30px;
 
 
 
+@media (min-width: 576px) {
+  .test{
+    width: 100%;
+    height: 35vw;
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 768px) { 
+  .test{
+    width: 100%;
+    height: 30vw;
+    object-fit: cover;
+  }
+ }
+
+@media (min-width: 992px) { 
+  .test{
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 1200px) { 
+  .test{
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+  }
+}
+
+.round{
+border-radius: 1rem;
+}
+
+.card-subtitle{
+  color: rgb(95, 95, 95);
+}
+
+.addBook, .btn-primary.active{
+  font-size: 2rem;
+  border: none;
+  background-color: none;
+  background: none;
+  width: 25%;
+  color: #273C58;
+}
+.deleteBook, .btn-primary.active{
+  font-size: 2rem;
+  border: none;
+  background-color: none;
+  background: none;
+  width: 25%;
+  color: #273C58;
+}
+
+#fadeIn div {
+  animation: fadein 2s;
+  -moz-animation: fadein 2s; /* Firefox */
+  -webkit-animation: fadein 2s; /* Safari and Chrome */
+  -o-animation: fadein 2s; /* Opera */
+}
+@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-moz-keyframes fadein { /* Firefox */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-o-keyframes fadein { /* Opera */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity: 1;
+  }
+}

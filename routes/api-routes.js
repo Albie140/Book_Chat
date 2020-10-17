@@ -76,6 +76,7 @@ module.exports = function(app) {
       });
   });
 
+
   app.put("/api/pgnum", (req, res) => {
     console.log("recieved user put request");
     console.log(req.body.pg_num);
@@ -114,6 +115,7 @@ module.exports = function(app) {
       res.json(data);
     });
   });
+
 
   // Route for logging user out
   app.get("/logout", (req, res) => {

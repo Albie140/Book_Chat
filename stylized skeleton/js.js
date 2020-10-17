@@ -1,9 +1,13 @@
-$( "a" ).click(function() {
-    $("span", this).toggle();
+// $( "a" ).click(function() {
+//     $("span", this).toggle();
 
-      });
+//       });
 
       $(document).ready(function() {
+        $( "a" ).click(function() {
+          $("span", this).toggle();
+      
+            });
         //parallax scroll
         $(window).on("load scroll", function() {
           var parallaxElement = $(".parallax_scroll"),
