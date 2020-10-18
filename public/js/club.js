@@ -42,6 +42,7 @@ $(document).ready(() => {
         })
             .then(() => {
                 console.log("created club " + topicInput);
+                location.reload();
                 // If there's an error, log the error
             })
             .catch(err => {
@@ -50,6 +51,5 @@ $(document).ready(() => {
             });
 
 
-        window.location.replace(`/thread/${topicID}`);
     });
 });

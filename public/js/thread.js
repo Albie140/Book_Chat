@@ -15,12 +15,6 @@ $("#sendMessage").on("submit", event => {
       })
         .then(() => {
           window.location.reload();
-          // If there's an error, handle it by throwing up a bootstrap alert
-        })
-        .catch(handleLoginErr);
-
-
-
-
+        });
 
 });

@@ -58,6 +58,21 @@ $(document).ready(() => {
 
     });
 
+    $(".deleteBook").on("click", event => {
+        event.preventDefault();
+        let club_id = $(event.target).attr("data-clubId")
+
+        $.ajax("/api/nofav", {
+            type: "PUT",
+            data: { book_id: club_id }
+
+        }).then(function () {
+            console.log();
+
+        });
+
+    });
+
     function renderSearch(data) {
 
         console.log("rendering search")
@@ -105,12 +120,12 @@ $(document).ready(() => {
         let bookURL = $(event.target).attr("data-selfLink");
 
 
-
-  // Add the "show" class to DIV
-  toast.className = "show";
-
-
         var toast = document.getElementById("toastConfirm");
+
+        // Add the "show" class to DIV
+        toast.className = "show";
+
+
 
         // Add the "show" class to DIV
         toast.className = "show";
@@ -121,8 +136,8 @@ $(document).ready(() => {
 
 
 
-      
-      
+
+
         setTimeout(function () { toasts.className = toast.className.replace("show", ""); }, 3000);
 
         $.ajax({
@@ -145,7 +160,7 @@ $(document).ready(() => {
 
 
         }).then(function () {
-            setTimeout(function(){ location.reload()}, 1000);
+            setTimeout(function () { location.reload() }, 1000);
 
 
         });

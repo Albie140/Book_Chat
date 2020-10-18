@@ -135,7 +135,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{dataValues.topic}}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{User.dataValues.first_name}} {{User.dataValues.last_name}}</h6>
-                                <a href="#" class="btn btn-primary">Join Discussion</a>
+                                <a href="/thread/{{dataValues.id}}" class="btn btn-primary">Join Discussion</a>
                                 <span class="page-number">{{dataValues.pg_num}}</span>
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{dataValues.topic}}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{User.dataValues.first_name}} {{User.dataValues.last_name}}</h6>
-                                <a href="#" class="btn btn-primary">Join Discussion</a>
+                                <a href="/thread/{{dataValues.id}}" class="btn btn-primary">Join Discussion</a>
                                 <span class="page-number">{{dataValues.pg_num}}</span>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
                     <div class="tab-pane fade" id="contact-just" role="tabpanel" aria-labelledby="contact-tab-just">
                         <div class="card shadow border border-top mb-2 mt-2" style=" border-radius: 20px; width: 100%;">
                             <div class="card-body">
-                                <form id="threadTopic" data-club_id="1">
+                                <form id="threadTopic" data-club_id="{{club.dataValues.Club.dataValues.id}}">
                                     <div class="form-group">
                                         <label for="topic">Discussion Question</label>
                                         <input type="text" class="form-control" id="topic">
