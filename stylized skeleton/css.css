@@ -279,7 +279,7 @@ h5{
   margin: 0;
   padding: 18px 16px 10px;
 }
-.inbox_chat { height: 550px; overflow-y: scroll;}
+.inbox_chat {  height: 70vh;; overflow-y: scroll;}
 
 .active_chat{ background:#ebebeb;}
 
@@ -362,8 +362,8 @@ color: #3C587C;
   width: 33px;
 }
 .msg_history {
-  height: 516px;
-  overflow-y: auto;
+  height: 65vh;
+overflow-y: auto;
 }
 
 .chatInput{
