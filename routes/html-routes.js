@@ -54,14 +54,14 @@ module.exports = function (app) {
       });
     }
     res.render("login", {
-        msg: "Welcome!"
-      });
+      msg: "Welcome!"
+    });
   });
 
   app.get("/signup", (req, res) => {
-      res.render("signup", {
-        msg: "Welcome!"
-      });
+    res.render("signup", {
+      msg: "Welcome!"
+    });
   });
 
   app.get("/login", (req, res) => {
@@ -70,22 +70,58 @@ module.exports = function (app) {
       res.redirect('/homepage')
     }
     res.render("login", {
-        msg: "Welcome!"
-      });
+      msg: "Welcome!"
+    });
   });
 
-  app.get("/thread/:id", (req, res) => {
+  app.get("/thread/:id", isAuthenticated, (req, res) => {
     let thread_id = req.params.id
     console.log("searching for thread #" + thread_id);
 
-    db.Thread.findOne({ where: { id: thread_id } }).then(function (oneThread) {
-      db.Response.findAll({ where: { ThreadId: thread_id } }).then(function (allChats) {
-        var hbsObject = {
-          response: allChats,
-          thread: oneThread
+    db.Thread.findOne({ include: db.User, where: { id: thread_id } }).then(function (threadData) {
+      db.Response.findAll({ where: { ThreadId: thread_id }, include: db.User }).then(function (responseData) {
+        let clearChat = [];
+
+        if (responseData.length != 0) {
+
+          for (let i = 0; i < responseData.length; i++) {
+            let nameData = "";
+            let ifyoudata = "received_msg";
+            let splitCreated = String(responseData[i].dataValues.createdAt).split(" ");
+            let splitTime = splitCreated[4].split(":");
+            let date = splitCreated[1] + " " + splitCreated[2] + ", " + splitCreated[3]
+            let time = ""
+
+            if (parseInt(splitTime[0]) > 12) {
+              time = (parseInt(splitTime[0])-12) + ":" + splitTime[1] + " PM"
+            }else{
+              time = splitTime[0] + ":" + splitTime[1] + " AM"
+            }
+
+            if (req.user.id == responseData[i].dataValues.User.dataValues.id) {
+              nameData = "You";
+              ifyoudata = "outgoing_msg";
+            }else{
+              nameData = responseData[i].dataValues.User.dataValues.first_name + " " + responseData[i].dataValues.User.dataValues.last_name;
+            }
+
+            let tempObj = {
+              id: responseData[i].dataValues.id,
+              comment: responseData[i].dataValues.comment,
+              timeMade: time,
+              dateMade: date,
+              author: nameData,
+              classifyou: ifyoudata
+            };
+
+            clearChat.push(tempObj);
+          };
         };
-        console.log(hbsObject);
-        res.render("chat", hbsObject);
+        var hbsObject = {
+          chat: clearChat,
+          thread: threadData
+        };
+        res.render("chat", hbsObject)
       });
     });
 
@@ -96,15 +132,15 @@ module.exports = function (app) {
     console.log("searching for club #" + club_id)
     let unspoiled = [];
 
-    db.Association.findOne({ include : db.Club, where : {UserId : req.user.id , ClubId : club_id}}).then(function (clubData) {
-      db.Thread.findAll({ where: { ClubId: club_id }, include : db.User}).then(function (threadData) {
-        
+    db.Association.findOne({ include: db.Club, where: { UserId: req.user.id, ClubId: club_id } }).then(function (clubData) {
+      db.Thread.findAll({ where: { ClubId: club_id }, include: db.User }).then(function (threadData) {
+
         for (let i = 0; i < threadData.length; i++) {
           if (threadData[i].dataValues.pg_num <= clubData.dataValues.current_pg) {
             unspoiled.push(threadData[i]);
           };
         }
-        
+
         // unspoiled posts
         console.log(unspoiled[0].dataValues.topic);
         // book title
@@ -138,14 +174,14 @@ module.exports = function (app) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/homepage", isAuthenticated, (req, res) => {
-    db.Association.findAll({ include : db.Club, where : {UserId : req.user.id , is_fav : true}}).then(function (allClubs) {
+    db.Association.findAll({ include: db.Club, where: { UserId: req.user.id, is_fav: true } }).then(function (allClubs) {
       var hbsObject = {
         book: allClubs,
         search: searchArr
       };
       searchArr = defaultArr;
       res.render("homepage", hbsObject);
-      
+
     });
   });
 

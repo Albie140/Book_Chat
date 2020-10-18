@@ -82,6 +82,23 @@ module.exports = function (app) {
       });
   });
 
+  app.post("/api/response", (req, res) => {
+    console.log("recieved response post request")
+    console.log(req.user)
+
+    db.Response.create({
+      comment: req.body.comment,
+      ThreadId: req.body.ThreadId,
+      UserId: req.user.id
+    })
+      .then((data) => {
+        console.log(data);
+        res.end();
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
 
   app.put("/api/pgnum", (req, res) => {
     console.log("recieved user put request");
