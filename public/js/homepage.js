@@ -109,6 +109,12 @@ $(document).ready(() => {
             let picture_url = ""
             if (response.volumeInfo.imageLinks) {
                 picture_url = response.volumeInfo.imageLinks.large ? response.volumeInfo.imageLinks.large : response.volumeInfo.imageLinks.thumbnail;
+                if (picture_url.startsWith("http://")) {
+                    console.log("adding s")
+                    picture_url = picture_url.split("");
+                    picture_url.splice(4, 0, "s");
+                    picture_url = picture_url.join("");
+                };
             } else {
                 picture_url = "https://via.placeholder.com/128x196?text=No+Image+Found"
             };
@@ -162,21 +168,4 @@ $(document).ready(() => {
     $(function () {
         $('span.stars').stars();
     });
-    // $(window).on("load scroll", function() {
-    //   var parallaxElement = $(".parallax_scroll"),
-    //     parallaxQuantity = parallaxElement.length;
-    //   window.requestAnimationFrame(function() {
-    //     for (var i = 0; i < parallaxQuantity; i++) {
-    //       var currentElement = parallaxElement.eq(i),
-    //         windowTop = $(window).scrollTop(),
-    //         elementTop = currentElement.offset().top,
-    //         elementHeight = currentElement.height(),
-    //         viewPortHeight = window.innerHeight * 1.4 - elementHeight * 0.5,
-    //         scrolled = windowTop - elementTop + viewPortHeight;
-    //       currentElement.css({
-    //         transform: "translate3d(0," + scrolled * -0.15 + "px, 0)"
-    //       });
-    //     }
-    //   });
-    // });
 });
