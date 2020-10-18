@@ -27,7 +27,7 @@ $(document).ready(() => {
                 indObj = {
                     image_url: data.items[i].volumeInfo.imageLinks ? data.items[i].volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/128x196?text=No+Image+Found',
                     book_title: data.items[i].volumeInfo.title ? data.items[i].volumeInfo.title : "No Title",
-                    book_author: data.items[i].volumeInfo.authors[0] ? data.items[i].volumeInfo.authors[0] : "No Author",
+                    book_author: data.items[i].volumeInfo.authors ? data.items[i].volumeInfo.authors[0] : "No Author",
                     selflink: data.items[i].selfLink
                 };
 
@@ -103,7 +103,7 @@ $(document).ready(() => {
         }).then(function (response) {
             let google_id = response.id;
             let book_title = response.volumeInfo.title;
-            let book_author = response.volumeInfo.authors[0] ? response.volumeInfo.authors[0] : "no author";
+            let book_author = response.volumeInfo.authors ? response.volumeInfo.authors[0] : "no author";
             let pg_count = response.volumeInfo.pageCount;
             let book_rating = response.volumeInfo.averageRating ? response.volumeInfo.averageRating : "NO RATING";
             let picture_url = ""
