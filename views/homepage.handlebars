@@ -3,10 +3,10 @@
     <header>
 
         <nav class="navbar navbar-expand-md navcolor navbar-light">
-<a class="navbar-brand" href="index.html"><strong>Project Name</strong></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+            <a style="font-family: 'Abril Fatface', cursive;" class="navbar-brand" href="/homepage"><strong>Book Chat</strong></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav ml-auto">
 
@@ -21,7 +21,7 @@
     </header>
 
     <section>
-<div id="toastConfirm">Joining club...</div>
+        <div id="toastConfirm">Joining club...</div>
 
         <div class="container-fluid">
             <!-- start of portfolio placeholder images -->
@@ -57,14 +57,15 @@
                             </a>
 
                             <div class="titleHeight">
-                             <h5 class="card-title mt-2">{{this.dataValues.Club.dataValues.book_title}}</h5><br>
+                                <h5 class="card-title mt-2">{{this.dataValues.Club.dataValues.book_title}}</h5><br>
                             </div>
                             <br>
                             <span class="card-subtitle">{{this.dataValues.Club.dataValues.book_author}}</span>
 
 
 
-                            <button data-clubId="{{this.dataValues.Club.dataValues.id}}" title="Delete Book"class="deleteBook btn btn-link btn-block material-icons right pt-0 mr-2" type="submit">
+                            <button data-clubId="{{this.dataValues.Club.dataValues.id}}" title="Delete Book"
+                                class="deleteBook btn btn-link btn-block material-icons right pt-0 mr-2" type="submit">
                                 remove_circle
                             </button>
 
@@ -76,14 +77,16 @@
                 {{/each}}
 
             </div>
+<br>
+<br>
 
-         
+
 
         </div>
 
     </section>
     <!-- adds the drop shadow to the portfolio section -->
-    <main class="shadow parallax_scroll ">
+    <main class="shadow parallax_scroll wheight">
         <a id="portfolio"></a>
         <div class="container">
             <!-- start of portfolio placeholder images -->
@@ -135,7 +138,7 @@
                                     style="width: 100%; border-radius: 15px;">
                             </a>
                             <div class="titleHeight">
-                            <h5 class="card-title mt-2">{{book_title}}</h5><br>
+                                <h5 class="card-title mt-2">{{book_title}}</h5><br>
                             </div><br>
                             <span class="card-subtitle ">{{book_author}}</span>
 
@@ -146,7 +149,8 @@
                                     bookmark
                                 </span></button> --}}
 
-                            <button data-selfLink="{{selflink}}" title="Join Book Club" class="addBook btn btn-link btn-block material-icons right pt-0 mr-2" type="submit">
+                            <button data-selfLink="{{selflink}}" title="Join Book Club"
+                                class="addBook btn btn-link btn-block material-icons right pt-0 mr-2" type="submit">
                                 add_circle
                             </button>
 
