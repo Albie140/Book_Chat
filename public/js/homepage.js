@@ -56,7 +56,23 @@ $(document).ready(() => {
 
     });
 
-  });
+
+    $(".deleteBook").on("click", event => {
+        event.preventDefault();
+        let club_id = $(event.target).attr("data-clubId")
+
+        $.ajax("/api/nofav", {
+            type: "PUT",
+            data: { book_id: club_id }
+
+        }).then(function () {
+            console.log();
+
+        });
+
+    });
+
+
 
   function renderSearch(data) {
 
@@ -104,8 +120,7 @@ $(document).ready(() => {
 
     // Add the "show" class to DIV
 
-
-    var toast = document.getElementById("toastConfirm");
+        var toast = document.getElementById("toastConfirm");
 
     // Add the "show" class to DIV
     toast.className = "show";
@@ -118,7 +133,6 @@ $(document).ready(() => {
 
 
     setTimeout(function () { toasts.className = toast.className.replace("show", ""); }, 3000);
-
 
 
     $.ajax({
@@ -138,6 +152,7 @@ $(document).ready(() => {
       };
 
       createClub(google_id, book_title, book_author, pg_count, picture_url, book_rating)
+
 
 
     }).then(function () {

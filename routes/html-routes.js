@@ -140,18 +140,6 @@ module.exports = function (app) {
             unspoiled.push(threadData[i]);
           };
         }
-
-        // unspoiled posts
-        console.log(unspoiled[0].dataValues.topic);
-        // book title
-        console.log(clubData.dataValues.Club.dataValues.book_title);
-        // user page
-        console.log(clubData.dataValues.current_pg);
-        // first thread topic
-        console.log(threadData[0].dataValues.topic);
-        // first thread author
-        console.log(threadData[0].User.dataValues.first_name);
-
         var hbsObject = {
           lessthanthread: unspoiled,
           club: clubData,

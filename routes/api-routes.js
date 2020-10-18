@@ -36,46 +36,77 @@ module.exports = function (app) {
   app.post("/api/club", (req, res) => {
     console.log("recieved post request")
     console.log(req.user);
-    db.Club.create({
-      google_id: req.body.google_id,
-      book_title: req.body.book_title,
-      book_author: req.body.book_author,
-      pg_count: req.body.pg_count,
-      picture_url: req.body.picture_url,
-      book_rating: req.body.book_rating
-    })
-      .then((data) => {
-        console.log(data)
-        db.Association.create({
-          is_fav: true,
-          current_pg: 0,
-          UserId: req.user.id,
-          ClubId: data.id
-        })
-          .then((assData) => {
-            console.log(assData)
-            res.redirect(307, `/club/${data.id}`);
+    db.Club.findOne({ where: { google_id: req.body.google_id } })
+      .then((found) => {
+        console.log("Searched for the book")
+        if (!found) {
+          console.log("It does not exist")
+          db.Club.create({
+            google_id: req.body.google_id,
+            book_title: req.body.book_title,
+            book_author: req.body.book_author,
+            pg_count: req.body.pg_count,
+            picture_url: req.body.picture_url,
+            book_rating: req.body.book_rating
           })
-        res.redirect(307, `/club/${data.id}`);
-      })
-      .catch(err => {
-        res.status(401).json(err);
+            .then((data) => {
+              db.Association.create({
+                is_fav: true,
+                current_pg: 0,
+                UserId: req.user.id,
+                ClubId: data.id
+              })
+                .then(() => {
+                  res.end();
+                })
+            })
+            .catch(err => {
+              res.status(401).json(err);
+            });
+
+        } else {
+          console.log("It does exist, now searching for an association")
+          db.Association.findOne({ where: { UserId: req.user.id, ClubId : found.id } }).then((foundTwo) => {
+            if (!foundTwo) {
+              console.log("It does not exist")
+              db.Association.create({
+                is_fav: true,
+                current_pg: 0,
+                UserId: req.user.id,
+                ClubId: found.id
+              })
+                .then(() => {
+                  res.end();
+                })
+            }else{
+              console.log("It does exist, updating");
+              console.log(req.user.id);
+              console.log(foundTwo.id);
+
+              db.Association.update({ is_fav : true }, {where: { id: foundTwo.id } })
+                .then((data) => {
+                  console.log(data)
+                  res.end();
+                })
+            };
+          })
+        }
+
       });
   });
 
   app.post("/api/thread", (req, res) => {
     console.log("recieved thread post request")
-    console.log(req.user)
+    console.log(req.user.id)
 
     db.Thread.create({
       topic: req.body.topic,
       pg_num: req.body.pg_num,
       ClubId: req.body.ClubId,
       UserId: req.user.id
-    })
-      .then((data) => {
+    }).then((data) => {
         console.log(data);
-        res.redirect(307, `/thread/${data.id}`);
+        res.end();
       })
       .catch(err => {
         res.status(401).json(err);
@@ -107,6 +138,23 @@ module.exports = function (app) {
     console.log(req.body.club_id);
 
     db.Association.update({ current_pg: req.body.pg_num }, { where: { UserId: req.user.id, ClubId: req.body.club_id } })
+      .then((data) => {
+        console.log(data);
+        res.end();
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+
+  app.put("/api/nofav", (req, res) => {
+    console.log("i have arrived");
+
+    club_id = req.body.book_id;
+
+    console.log(club_id);
+
+    db.Association.update({ is_fav: false }, { where: { UserId: req.user.id, ClubId: club_id } })
       .then((data) => {
         console.log(data);
         res.end();
