@@ -3,7 +3,8 @@
     <header>
 
         <nav class="navbar navbar-expand-md navcolor navbar-light">
-            <a style="font-family: 'Abril Fatface', cursive;" class="navbar-brand" href="/homepage"><strong>Book Chat</strong></a>
+            <a style="font-family: 'Abril Fatface', cursive;" class="navbar-brand" href="/homepage"><strong>Book
+                    Chat</strong></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -33,15 +34,16 @@
 
                 </div>
                 <div class="col-8 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <img src="{{club.dataValues.Club.dataValues.picture_url}}" alt="Book Cover"
-                        class="img-fluid" style="border-radius: 20px 20px 0px 0px;">
+                    <img src="{{club.dataValues.Club.dataValues.picture_url}}" alt="Book Cover" class="img-fluid"
+                        style="border-radius: 20px 20px 0px 0px;">
 
                 </div>
 
-              
+
 
                 <div class="col-12 col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12 m">
-                    <h2 class="m" style="font-family: 'Abril Fatface', cursive;">{{club.dataValues.Club.dataValues.book_title}}
+                    <h2 class="m" style="font-family: 'Abril Fatface', cursive;">
+                        {{club.dataValues.Club.dataValues.book_title}}
                     </h2>
                     <p class="mt-2" id="author">
                         Author: {{club.dataValues.Club.dataValues.book_author}}
@@ -63,19 +65,21 @@
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <br> <br> <br>
-            <h3 style=" font-family: 'Abril Fatface', cursive;">Join the discussion</h3>
+            <h2 style=" font-family: 'Abril Fatface', cursive;">Join the discussion</h2>
+
 
 
 
 
                        <p>Excited about a plot twist? Disappointed with the ending? Whether you're feeling good or feeling not so good about this book, start a discussion to see what others are feeling. </p>
 
+
             <br>
             {{!-- {{menu nav}} --}}
             <ul class="nav nav-tabs nav-justified md-tabs indigo mt-4" id="myTabJust" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
-                        aria-controls="home-just" aria-selected="true">Sort by page number</a>
+                        aria-controls="home-just" aria-selected="true">Sort by chapter</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="profile-tab-just" data-toggle="tab" href="#profile-just" role="tab"
@@ -99,7 +103,31 @@
             <div class="tab-content b-col card" id="myTabContentJust">
                 <br><br>
                 <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
-                    <div class="card shadow border border-top mb-2 mt-2" style=" border-radius: 20px; width: 100%;">
+                                    <div class="row">
+
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <form class="form-inline form-search">
+
+                            <input id="search_input" class="form-control form-control-lg shadow-lg mr-2 " type="text"
+                                placeholder="What chapter are you on?" style="width: 80%;"
+                                max="{{club.dataValues.Club.dataValues.pg_count}}"
+                                value="{{club.dataValues.current_pg}}" id="current_pg">
+
+                            <button id="pgBtn" class="btn btn-primary text-uppercase round" type="submit"
+                                style="width: auto;"><span class="material-icons mt-2">
+                                    search
+                                </span></button>
+
+                        </form>
+
+                    </div>
+                    <div class="col-md-6 col-sm-0 col-xs-0">
+
+                    </div>
+
+                </div>
+
+                    {{!-- <div class="card shadow border border-top mb-2 mt-2" style=" border-radius: 20px; width: 100%;">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
@@ -136,17 +164,17 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
 
                     {{#each lessthanthread}}
                     <div class="card shadow border border-white mb-2 mt-2" style=" border-radius: 20px; width: 100%;">
                         <div class="card-body">
-                            <h5 class="card-title">{{dataValues.topic}}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{User.dataValues.first_name}}
-                                {{User.dataValues.last_name}}</h6>
+                            <h6 class="card-title">{{User.dataValues.first_name}} {{User.dataValues.last_name}}</h6>
+                            <p class="card-text mb-2">{{dataValues.topic}}
+                            </p>
                             <a href="/thread/{{dataValues.id}}" class="btn btn-primary">Join Discussion</a>
-                            <span class="page-number">{{dataValues.pg_num}}</span>
+                            <span class="page-number text-muted">Chapter: {{dataValues.pg_num}}</span>
                         </div>
                     </div>
                     {{/each}}
@@ -161,9 +189,9 @@
                         <div class="card-body">
                             <h6 class="card-title">{{User.dataValues.first_name}} {{User.dataValues.last_name}}</h6>
                             <p class="card-text mb-2">{{dataValues.topic}}
-                                </p>
+                            </p>
                             <a href="/thread/{{dataValues.id}}" class="btn btn-primary">Join Discussion</a>
-                            <span class="page-number">{{dataValues.pg_num}}</span>
+                            <span class="page-number text-muted">Chapter: {{dataValues.pg_num}}</span>
                         </div>
                     </div>
                     {{/each}}
@@ -181,9 +209,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="pg_num">Current Page Number</label>
-                                    <input type="number" class="form-control" id="pg_num"
-                                        placeholder="max: {{club.dataValues.Club.dataValues.pg_count}}">
+                                    <label for="pg_num">Current Chapter</label>
+                                    <input type="number" class="form-control" id="pg_num">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
