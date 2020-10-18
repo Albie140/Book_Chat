@@ -148,6 +148,19 @@ $(document).ready(() => {
                 // If there's an error, log the error
             })
             .catch(err => {
+              var toastError = document.getElementById("toastConfirmError");
+
+              // Add the "show" class to DIV
+              toastError.className = "show";
+              // After 3 seconds, remove the show class from DIV
+      
+              setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
+      
+      
+      
+      
+      
+              setTimeout(function () { toastErrorss.className = toastError.className.replace("show", ""); }, 3000);
                 console.log("here is wrong")
                 console.log(err);
             });
