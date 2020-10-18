@@ -3,10 +3,10 @@
     <header>
 
         <nav class="navbar navbar-expand-md navcolor navbar-light">
-<a class="navbar-brand" href="index.html"><strong>Project Name</strong></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+            <a style="font-family: 'Abril Fatface', cursive;" class="navbar-brand" href="/homepage"><strong>Book Chat</strong></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav ml-auto">
 
@@ -29,16 +29,20 @@
             <br>
 
             <div class="row">
-                <div class="col-1">
+                <div class="col-2 col-xl-1 col-lg-1 col-md-1 col-sm-2 col-xs-2">
 
                 </div>
-                <div class="col-3">
-                    <img src="{{club.dataValues.Club.dataValues.picture_url}}"
-                        alt="Book Cover" class="img-fluid" style="width: 100%; border-radius: 20px 20px 0px 0px;">
+                <div class="col-8 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <img src="{{club.dataValues.Club.dataValues.picture_url}}" alt="Book Cover"
+                        class="img-fluid" style="border-radius: 20px 20px 0px 0px;">
 
                 </div>
-                <div class="col-7">
-                    <h2 style="font-family: 'Abril Fatface', cursive;">{{club.dataValues.Club.dataValues.book_title}}</h2>
+
+              
+
+                <div class="col-12 col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12 m">
+                    <h2 class="m" style="font-family: 'Abril Fatface', cursive;">{{club.dataValues.Club.dataValues.book_title}}
+                    </h2>
                     <p class="mt-2" id="author">
                         Author: {{club.dataValues.Club.dataValues.book_author}}
                     </p>
@@ -46,7 +50,7 @@
                         Maybe a description
                     </p>
                 </div>
-                <div class="col-1">
+                <div class="col-0 col-xl-1 col-lg-1 col-md-1 col-sm-0 col-xs-0">
 
                 </div>
 
@@ -54,141 +58,143 @@
 
         </div>
 
-        </section>
-        {{!-- {{adds the drop shadow to the portfolio section}} --}}
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <br> <br> <br>
-                <h3 style=" font-family: 'Abril Fatface', cursive;">Join the discussion</h3>
+    </section>
+    {{!-- {{adds the drop shadow to the portfolio section}} --}}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <br> <br> <br>
+            <h3 style=" font-family: 'Abril Fatface', cursive;">Join the discussion</h3>
 
 
 
-                <p>I'm baby kinfolk cold-pressed glossier narwhal kale chips letterpress
-                    health
-                    goth drinking</p>
-                <br>
-                {{!-- {{menu nav}} --}}
-                <ul class="nav nav-tabs nav-justified md-tabs indigo mt-4" id="myTabJust" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
-                            aria-controls="home-just" aria-selected="true">Sort by page number</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab-just" data-toggle="tab" href="#profile-just" role="tab"
-                            aria-controls="profile-just" aria-selected="false">View all</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="contact-tab-just" data-toggle="tab" href="#contact-just" role="tab"
-                            aria-controls="contact-just" aria-selected="false">Create discussion</a>
-                    </li>
-                </ul>
+            <p>I'm baby kinfolk cold-pressed glossier narwhal kale chips letterpress
+                health
+                goth drinking</p>
+            <br>
+            {{!-- {{menu nav}} --}}
+            <ul class="nav nav-tabs nav-justified md-tabs indigo mt-4" id="myTabJust" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
+                        aria-controls="home-just" aria-selected="true">Sort by page number</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab-just" data-toggle="tab" href="#profile-just" role="tab"
+                        aria-controls="profile-just" aria-selected="false">View all</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="contact-tab-just" data-toggle="tab" href="#contact-just" role="tab"
+                        aria-controls="contact-just" aria-selected="false">Create discussion</a>
+                </li>
+            </ul>
 
-            </div>
         </div>
+    </div>
 
-        <main class="shadow b-col">
-            <div class="container">
+    <main class="shadow b-col">
+        <div class="container">
 
-                {{!-- {{First Tab}} --}}
+            {{!-- {{First Tab}} --}}
 
-                <div class="tab-content b-col card" id="myTabContentJust">
-                    <br><br>
-                    <div class="tab-pane fade show active" id="home-just" role="tabpanel"
-                        aria-labelledby="home-tab-just">
-                        <div class="card shadow border border-top mb-2 mt-2" style=" border-radius: 20px; width: 100%;">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <form>
-                                            <div class="input-group  mb-3">
-                                                <input type="number" min="0" max="{{club.dataValues.Club.dataValues.pg_count}}" value="{{club.dataValues.current_pg}}" class="form-control"
-                                                    id="current_pg" placeholder="Current page number">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text"
-                                                        style="border-radius: 0% 1rem 1rem 0%;">/<span id="totalPgCount">{{club.dataValues.Club.dataValues.pg_count}}</span>
-                                                    </span>
-                                                </div>
+            <div class="tab-content b-col card" id="myTabContentJust">
+                <br><br>
+                <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
+                    <div class="card shadow border border-top mb-2 mt-2" style=" border-radius: 20px; width: 100%;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <form>
+                                        <div class="input-group  mb-3">
+                                            <input type="number" min="0"
+                                                max="{{club.dataValues.Club.dataValues.pg_count}}"
+                                                value="{{club.dataValues.current_pg}}" class="form-control"
+                                                id="current_pg" placeholder="Current page number">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"
+                                                    style="border-radius: 0% 1rem 1rem 0%;">/<span
+                                                        id="totalPgCount">{{club.dataValues.Club.dataValues.pg_count}}</span>
+                                                </span>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div class="col-6">
-                                        <button type="submit" id="pgBtn" class="btn btn-secondary mb-2"
-                                            style="margin: auto; width: 100%; border-radius: 1rem 1rem 1rem 1rem;">Update</button>
-
-
-                                    </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-6">
+                                    <button type="submit" id="pgBtn" class="btn btn-secondary mb-2"
+                                        style="margin: auto; width: 100%; border-radius: 1rem 1rem 1rem 1rem;">Update</button>
 
 
                                 </div>
-                                <div class="row">
 
-                                    <figure id="progressBar">
-                                        <div id="progress"></div>
 
-                                    </figure>
+                            </div>
+                            <div class="row">
 
-                                </div>
+                                <figure id="progressBar">
+                                    <div id="progress"></div>
+
+                                </figure>
+
                             </div>
                         </div>
-
-
-                        {{#each lessthanthread}}
-                        <div class="card shadow border border-white mb-2 mt-2"
-                            style=" border-radius: 20px; width: 100%;">
-                            <div class="card-body">
-                                <h5 class="card-title">{{dataValues.topic}}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">{{User.dataValues.first_name}} {{User.dataValues.last_name}}</h6>
-                                <a href="/thread/{{dataValues.id}}" class="btn btn-primary">Join Discussion</a>
-                                <span class="page-number">{{dataValues.pg_num}}</span>
-                            </div>
-                        </div>
-                        {{/each}}
-
                     </div>
 
-                    {{!-- {{Second Tab}} --}}
-                    <div class="tab-pane fade" id="profile-just" role="tabpanel" aria-labelledby="profile-tab-just">
 
-                        {{#each thread}}
-                        <div class="card shadow border border-white mb-2 mt-2"
-                            style=" border-radius: 20px; width: 100%;">
-                            <div class="card-body">
-                                <h5 class="card-title">{{dataValues.topic}}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">{{User.dataValues.first_name}} {{User.dataValues.last_name}}</h6>
-                                <a href="/thread/{{dataValues.id}}" class="btn btn-primary">Join Discussion</a>
-                                <span class="page-number">{{dataValues.pg_num}}</span>
-                            </div>
+                    {{#each lessthanthread}}
+                    <div class="card shadow border border-white mb-2 mt-2" style=" border-radius: 20px; width: 100%;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{dataValues.topic}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{User.dataValues.first_name}}
+                                {{User.dataValues.last_name}}</h6>
+                            <a href="/thread/{{dataValues.id}}" class="btn btn-primary">Join Discussion</a>
+                            <span class="page-number">{{dataValues.pg_num}}</span>
                         </div>
-                        {{/each}}
-
-
                     </div>
-                    {{!-- {{Third Tab}} --}}
-                    <div class="tab-pane fade" id="contact-just" role="tabpanel" aria-labelledby="contact-tab-just">
-                        <div class="card shadow border border-top mb-2 mt-2" style=" border-radius: 20px; width: 100%;">
-                            <div class="card-body">
-                                <form id="threadTopic" data-club_id="{{club.dataValues.Club.dataValues.id}}">
-                                    <div class="form-group">
-                                        <label for="topic">Discussion Question</label>
-                                        <input type="text" class="form-control" id="topic">
-                                    </div>
+                    {{/each}}
 
-                                    <div class="form-group">
-                                        <label for="pg_num">Page Reference</label>
-                                        <input type="number" class="form-control" id="pg_num"
-                                            placeholder="max: {{club.dataValues.Club.dataValues.pg_count}}">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </form>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
 
-                <br></br>
+                {{!-- {{Second Tab}} --}}
+                <div class="tab-pane fade" id="profile-just" role="tabpanel" aria-labelledby="profile-tab-just">
+
+                    {{#each thread}}
+                    <div class="card shadow border border-white mb-2 mt-2" style=" border-radius: 20px; width: 100%;">
+                        <div class="card-body">
+                            <h6 class="card-title">{{User.dataValues.first_name}} {{User.dataValues.last_name}}</h6>
+                            <p class="card-text mb-2">{{dataValues.topic}}
+                                </p>
+                            <a href="/thread/{{dataValues.id}}" class="btn btn-primary">Join Discussion</a>
+                            <span class="page-number">{{dataValues.pg_num}}</span>
+                        </div>
+                    </div>
+                    {{/each}}
+
+
+                </div>
+                {{!-- {{Third Tab}} --}}
+                <div class="tab-pane fade" id="contact-just" role="tabpanel" aria-labelledby="contact-tab-just">
+                    <div class="card shadow border border-top mb-2 mt-2" style=" border-radius: 20px; width: 100%;">
+                        <div class="card-body">
+                            <form id="threadTopic" data-club_id="{{club.dataValues.Club.dataValues.id}}">
+                                <div class="form-group">
+                                    <label for="topic">Discussion Question</label>
+                                    <input type="text" class="form-control" id="topic">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pg_num">Current Page Number</label>
+                                    <input type="number" class="form-control" id="pg_num"
+                                        placeholder="max: {{club.dataValues.Club.dataValues.pg_count}}">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </main>
+
+            <br></br>
+        </div>
+    </main>
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

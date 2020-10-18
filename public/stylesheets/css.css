@@ -88,7 +88,7 @@ h1{
 .grow:hover { 
   transform: scale(1.05); 
   margin-top: 10px !important;
-  margin-bottom: 10px !important;
+  margin-bottom: 48px !important;
 }
 .card-title {
   font-size: 1rem;
@@ -209,24 +209,28 @@ padding-bottom: 10px;
 }
 
 .btn-primary{
-  font-family: gotham-medium;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
 border: none;
 background-color: #3C587C;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active{
-  font-family: gotham-medium;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
 color: #fff;
 background-color: #273C58;
 }
 .btn-secondary{
-  font-family: gotham-medium;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
 color: rgb(56, 56, 56);
 background-color: #d9ebf3;
 border: none;
 
 }
 .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active{
-  font-family: gotham-medium;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
 color: rgb(56, 56, 56);
 background-color: #c0d9e4;
 
@@ -259,7 +263,8 @@ background-position: 0 0;
 /* margin-left: 16px; */
 }
 h5{
-font-family: gotham-medium;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
 min-height: 38px;
 display: inline-block;
 /* width: 180px; */
@@ -303,6 +308,7 @@ display: inline-block;
 padding: 0 0 0 10px;
 vertical-align: top;
 width: 70%;
+/* color: rgb(255, 255, 255); */
 }
 .received_withd_msg p {
 /* background: #ebebeb none repeat scroll 0 0; */
@@ -362,7 +368,8 @@ width: 100%;
 
 .type_msg {border-top: 1px solid #c4c4c4;position: relative;}
 .msg_send_btn {
-  font-family: gotham-medium;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
 background: none repeat scroll 0 0;
 border: none;
 
@@ -470,16 +477,22 @@ margin-bottom: 30px;
   color: #777;
 }
 .btn-primary{
-  font-family: gotham-medium;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
   background-color: #3C587C;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active{
-  font-family: gotham-medium;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
   color: #fff;
   background-color: #273C58;
 }
 
-
+@media (max-width: 500px) {
+.m{
+  margin-top: 20px;
+}
+}
 
 
 
@@ -647,5 +660,20 @@ border-radius: 1rem;
   to {bottom: 0; opacity: 0;}
 }
 p, span{
-  font-family: gotham-book;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn{
+  border-radius: 1rem;
+}
+
+h6{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+span{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.wheight{
+height: 100;
 }
