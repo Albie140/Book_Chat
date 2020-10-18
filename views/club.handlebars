@@ -174,10 +174,14 @@
                             <p class="card-text mb-2">{{dataValues.topic}}
                             </p>
                             <a href="/thread/{{dataValues.id}}" class="btn btn-primary">Join Discussion</a>
-                            <span class="page-number text-muted">Chapter: {{dataValues.pg_num}}</span>
+                            <span class="page-number text-muted ml-2">Chapter: {{dataValues.pg_num}}</span>
                         </div>
                     </div>
+                    {{else}}
+                    <br>
+                    <p class="defaultTxt">There aren't any discussions in this range, try another chapter.</p>
                     {{/each}}
+                    
 
                 </div>
 
@@ -191,9 +195,12 @@
                             <p class="card-text mb-2">{{dataValues.topic}}
                             </p>
                             <a href="/thread/{{dataValues.id}}" class="btn btn-primary">Join Discussion</a>
-                            <span class="page-number text-muted">Chapter: {{dataValues.pg_num}}</span>
+                            <span class="page-number text-muted ml-2">Chapter: {{dataValues.pg_num}}</span>
                         </div>
                     </div>
+                     {{else}}
+                      <br>
+                    <p class="text-center defaultTxt">Be the first to respond! There aren’t any discussions yet.</p>
                     {{/each}}
 
 
