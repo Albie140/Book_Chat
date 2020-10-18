@@ -208,4 +208,20 @@ module.exports = function (app) {
       });
     }
   });
+
+
+
+
+
+
+
+  // app.delete("/api/club/:id", function (req, res) {
+  //   db.Club.destroy({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   }).then(function (data) {
+  //       res.json(data);
+  //     });
+  // });
 };

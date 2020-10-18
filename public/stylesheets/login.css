@@ -27,6 +27,7 @@
   }
   
   .form-signin .btn {
+    font-family: gotham-medium;
     font-size: 80%;
     border-radius: 1rem;
     font-weight: bold;
@@ -76,9 +77,11 @@
     color: #777;
   }
   .btn-primary{
+    font-family: gotham-medium;
     background-color: #3C587C;
   }
   .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active{
+    font-family: gotham-medium;
     color: #fff;
     background-color: #273C58;
 }

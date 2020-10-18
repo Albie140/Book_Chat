@@ -209,20 +209,24 @@ padding-bottom: 10px;
 }
 
 .btn-primary{
+  font-family: gotham-medium;
 border: none;
 background-color: #3C587C;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active{
+  font-family: gotham-medium;
 color: #fff;
 background-color: #273C58;
 }
 .btn-secondary{
+  font-family: gotham-medium;
 color: rgb(56, 56, 56);
 background-color: #d9ebf3;
 border: none;
 
 }
 .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active{
+  font-family: gotham-medium;
 color: rgb(56, 56, 56);
 background-color: #c0d9e4;
 
@@ -255,6 +259,7 @@ background-position: 0 0;
 /* margin-left: 16px; */
 }
 h5{
+font-family: gotham-medium;
 min-height: 38px;
 display: inline-block;
 /* width: 180px; */
@@ -289,7 +294,7 @@ border-bottom: 1px solid #c4c4c4;
 margin: 0;
 padding: 18px 16px 10px;
 }
-.inbox_chat { height: 550px; overflow-y: scroll;}
+.inbox_chat {  height: 70vh;; overflow-y: scroll;}
 
 .active_chat{ background:#ebebeb;}
 
@@ -357,6 +362,7 @@ width: 100%;
 
 .type_msg {border-top: 1px solid #c4c4c4;position: relative;}
 .msg_send_btn {
+  font-family: gotham-medium;
 background: none repeat scroll 0 0;
 border: none;
 
@@ -372,7 +378,7 @@ top: 11px;
 width: 33px;
 }
 .msg_history {
-height: 516px;
+  height: 65vh;
 overflow-y: auto;
 }
 
@@ -414,6 +420,7 @@ margin-bottom: 30px;
 }
 
 .form-signin .btn {
+
   font-size: 80%;
   border-radius: 1rem;
   font-weight: bold;
@@ -463,9 +470,11 @@ margin-bottom: 30px;
   color: #777;
 }
 .btn-primary{
+  font-family: gotham-medium;
   background-color: #3C587C;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active{
+  font-family: gotham-medium;
   color: #fff;
   background-color: #273C58;
 }
@@ -584,6 +593,7 @@ border-radius: 1rem;
 
 
 .titleHeight{
+  margin-top: 5px;
   min-height: 48px;
   max-height: 48px;
   display: inline-block;
@@ -635,4 +645,7 @@ border-radius: 1rem;
 @keyframes fadeout {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
+}
+p, span{
+  font-family: gotham-book;
 }

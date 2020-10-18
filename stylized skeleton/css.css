@@ -108,17 +108,7 @@ h2{
 
 
 
-#exTab1 .tab-content {
-  color : white;
-  background-color: #428bca;
-  padding : 5px 15px;
-}
 
-#exTab2 h3 {
-  color : white;
-  background-color: #428bca;
-  padding : 5px 15px;
-}
 
 /* remove border radius for the tab */
 
@@ -186,7 +176,7 @@ h2{
   background-color: #d9ebf3;
   border-radius: 1rem !important;
   margin: 5px;
-  min-width: 300px;
+  min-width: 200px;
 }
 
 .nav-tabs {
@@ -289,7 +279,7 @@ h5{
   margin: 0;
   padding: 18px 16px 10px;
 }
-.inbox_chat { height: 550px; overflow-y: scroll;}
+.inbox_chat {  height: 70vh;; overflow-y: scroll;}
 
 .active_chat{ background:#ebebeb;}
 
@@ -372,8 +362,8 @@ color: #3C587C;
   width: 33px;
 }
 .msg_history {
-  height: 516px;
-  overflow-y: auto;
+  height: 65vh;
+overflow-y: auto;
 }
 
 .chatInput{
@@ -420,3 +410,10 @@ color: #3C587C;
   visibility: visible;
 }
 
+
+h3{
+  font-size: 3vw;
+}
+.btn{
+  border-radius: 1rem ;
+}
