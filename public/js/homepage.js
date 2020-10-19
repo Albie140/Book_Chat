@@ -146,12 +146,11 @@ $(document).ready(() => {
 
         }).then(function () {
 
-            $(document).ready(function(){
-              $(this).scrollTop(0).then(function () {
+       
                 setTimeout(function () { location.reload() }, 2000);
-              });
+            
               
-            });
+           
         })
 
     });
