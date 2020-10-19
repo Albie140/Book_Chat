@@ -130,10 +130,10 @@ $(document).ready(() => {
 
             $(document).ready(function(){
               $(this).scrollTop(0);
-              setTimeout(function () { reload() }, 1500);
+              
           });
 
-
+          setTimeout(function () { reload() }, 1500);
 
         });
 
