@@ -106,6 +106,7 @@ $(document).ready(() => {
             let book_author = response.volumeInfo.authors ? response.volumeInfo.authors[0] : "no author";
             let pg_count = response.volumeInfo.pageCount;
             let book_rating = response.volumeInfo.averageRating ? response.volumeInfo.averageRating : "NO RATING";
+            let book_description = response.volumeInfo.description ? response.volumeInfo.description : "no description available";
             let picture_url = ""
             if (response.volumeInfo.imageLinks) {
                 picture_url = response.volumeInfo.imageLinks.large ? response.volumeInfo.imageLinks.large : response.volumeInfo.imageLinks.thumbnail;
@@ -119,7 +120,7 @@ $(document).ready(() => {
                 picture_url = "https://via.placeholder.com/128x196?text=No+Image+Found"
             };
 
-            createClub(google_id, book_title, book_author, pg_count, picture_url, book_rating)
+            createClub(google_id, book_title, book_author, pg_count, picture_url, book_rating, book_description)
 
 
 
@@ -134,14 +135,15 @@ $(document).ready(() => {
 
 
 
-    function createClub(google_id, book_title, book_author, pg_count, picture_url, book_rating) {
+    function createClub(google_id, book_title, book_author, pg_count, picture_url, book_rating, book_description) {
         $.post("/api/club", {
             google_id: google_id,
             book_title: book_title,
             book_author: book_author,
             pg_count: pg_count,
             picture_url: picture_url,
-            book_rating: book_rating
+            book_rating: book_rating,
+            book_description: book_description
         })
             .then(() => {
                 console.log("created club " + book_title);
