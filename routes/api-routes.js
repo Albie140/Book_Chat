@@ -47,7 +47,8 @@ module.exports = function (app) {
             book_author: req.body.book_author,
             pg_count: req.body.pg_count,
             picture_url: req.body.picture_url,
-            book_rating: req.body.book_rating
+            book_rating: req.body.book_rating,
+            book_description: req.body.book_description
           })
             .then((data) => {
               db.Association.create({

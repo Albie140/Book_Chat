@@ -19,13 +19,18 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         picture_url: {
-            type: DataTypes.STRING(3000),
+            type: DataTypes.STRING(1500),
             allowNull: false
         },
         book_rating: {
             type: DataTypes.STRING,
             allowNull: false,
             default: "no rating"
+        },
+        book_description: {
+            type: DataTypes.STRING(1500),
+            allowNull: false,
+            default: "no description"
         }
     });
 

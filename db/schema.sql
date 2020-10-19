@@ -4,4 +4,4 @@ CREATE DATABASE bookchat_db;
 USE bookchat_db;
 
 
-ALTER TABLE Clubs ADD COLUMN book_rating VARCHAR(15) AFTER picture_url;
+ALTER TABLE Clubs ADD COLUMN book_description VARCHAR(15) AFTER book_rating;
