@@ -127,10 +127,13 @@ $(document).ready(() => {
 
 
         }).then(function () {
-           
+
             $(document).ready(function(){
               $(this).scrollTop(0);
-              setTimeout(function () { location.reload() }, 1500);
+              setTimeout(function () { reload() }, 1500);
+          });
+
+
 
         });
 
