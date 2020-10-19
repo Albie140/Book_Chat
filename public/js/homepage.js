@@ -103,13 +103,31 @@ $(document).ready(() => {
             url: bookURL,
             method: "GET"
         }).then(function (response) {
+
+          function removeTags(str) { 
+            if ((str===null) || (str==='')) 
+                return false; 
+            else
+                str = str.toString(); 
+                  
+            // Regular expression to identify HTML tags in  
+            // the input string. Replacing the identified  
+            // HTML tag with a null string. 
+            return str.replace( /(<([^>]+)>)/ig, ''); 
+        } 
+       
+
+
+
+
             let google_id = response.id;
             let book_title = response.volumeInfo.title;
             let book_author = response.volumeInfo.authors ? response.volumeInfo.authors[0] : "no author";
             let pg_count = response.volumeInfo.pageCount;
             let book_rating = response.volumeInfo.averageRating ? response.volumeInfo.averageRating : "NO RATING";
-            let book_description = response.volumeInfo.description ? response.volumeInfo.description : "no description available";
+            let book_description_raw = response.volumeInfo.description ? response.volumeInfo.description : "no description available";
             let picture_url = ""
+            let book_description = removeTags(book_description_raw);
             if (response.volumeInfo.imageLinks) {
                 picture_url = response.volumeInfo.imageLinks.large ? response.volumeInfo.imageLinks.large : response.volumeInfo.imageLinks.thumbnail;
                 if (picture_url.startsWith("http://")) {
@@ -132,9 +150,8 @@ $(document).ready(() => {
               $(this).scrollTop(0);
               
           });
-
-          setTimeout(function () { reload() }, 1500);
-
+        }).then(function () {
+          setTimeout(function () { reload() }, 2000);
         });
 
     });
