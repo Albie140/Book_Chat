@@ -147,12 +147,12 @@ $(document).ready(() => {
         }).then(function () {
 
             $(document).ready(function(){
-              $(this).scrollTop(0);
+              $(this).scrollTop(0).then(function () {
+                setTimeout(function () { reload() }, 2000);
+              });
               
           });
-        }).then(function () {
-          setTimeout(function () { reload() }, 2000);
-        });
+        })
 
     });
 
