@@ -124,7 +124,10 @@ $(document).ready(() => {
 
 
         }).then(function () {
-            setTimeout(function () { location.reload() }, 1000);
+            $(document).ready(function(){
+              $(this).scrollTop(0);
+              setTimeout(function () { reload() }, 1500);
+          });
 
 
         });
