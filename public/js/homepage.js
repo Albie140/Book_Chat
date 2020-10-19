@@ -41,7 +41,9 @@ $(document).ready(() => {
                 data: { daddy: resArr }
 
             }).then(function () {
-                location.reload();
+          location.reload();
+            });
+                
 
             });
 
@@ -124,8 +126,10 @@ $(document).ready(() => {
 
 
         }).then(function () {
-            setTimeout(function () { location.reload() }, 1000);
-
+           
+            $(document).ready(function(){
+              $(this).scrollTop(0);
+              setTimeout(function () { location.reload() }, 1500);
 
         });
 
